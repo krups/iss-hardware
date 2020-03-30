@@ -1,0 +1,99 @@
+Partlist
+
+Exported from kreme-iss.sch at 3/10/20 10:49 AM
+
+EAGLE Version 9.5.1 Copyright (c) 1988-2019 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value                      Device                     Package                   Library                 Sheet
+
+ANT      U.FL-R-SMT-1(10)           U.FL-R-SMT-1(10)           CONN_R-SMT-1(10)          ufl                     4
+BATTERY  2 PIN JST                  S2B-PH-SM4-TB(LF)(SN)      JST_S2B-PH-SM4-TB(LF)(SN) S2B-PH-SM4-TB_LF__SN_   3
+C1       10uF                       C-EUC0603                  C0603                     rcl                     3
+C2       1uF                        C-EUC0603                  C0603                     rcl                     3
+C3       0.1uF                      C-USC0603                  C0603                     adafruit                2
+C4       0.1uF                      C-USC0603                  C0603                     adafruit                2
+C5       0.1uF                      C-USC0603                  C0603                     adafruit                2
+C6       0.1uF                      C-USC0603                  C0603                     adafruit                2
+C7       0.1uF                      C-USC0603                  C0603                     adafruit                2
+C8       10uF                       C-USC0603                  C0603                     adafruit                1
+C9       0.01uF                     C-USC0603                  C0603                     adafruit                1
+C10      0.01uF                     C-USC0603                  C0603                     adafruit                1
+C11      0.01uF                     C-USC0603                  C0603                     adafruit                1
+C12      0.1uF                      C-USC0603                  C0603                     adafruit                2
+C13      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C14      0.1uF                      C-USC0603                  C0603                     adafruit                3
+C15      0.1uF                      C-EUC0603                  C0603                     rcl                     1
+C16      0.1uF                      C-EUC0603                  C0603                     rcl                     1
+C17      0.1uF                      C-EUC0603                  C0603                     rcl                     1
+C18      0.1uF                      C-USC0603                  C0603                     rcl                     3
+C19      2.2uF                      C-USC0603                  C0603                     rcl                     3
+C20      0.01uF                     C-USC0603                  C0603                     rcl                     3
+C22      1uF                        C-EUC0603                  C0603                     rcl                     4
+C24      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C25      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C26      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C27      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C28      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C29      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C30      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C31      0.01uF                     C-USC0603                  C0603                     adafruit                2
+C32      0.1uF                      C-USC0603                  C0603                     adafruit                2
+C33      0.1uF                      C-USC0603                  C0603                     adafruit                2
+CHARGE                              PINHD-1X2                  1X02                      pinhead                 3
+CHG      RED                        LED-RED0603                LED-0603                  SparkFun-LED            3
+D3       MBR120                     MBR120                     SOD123FL                  gsynth                  3
+H1       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+H2       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+H3       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+H4       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+H5       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+H6       MOUNT-PAD-ROUND2.8         MOUNT-PAD-ROUND2.8         2,8-PAD                   holes                   1
+IC1      ADG609RU                   ADG609RU                   TSSOP16                   analog-devices          2
+IC3      ADG609RU                   ADG609RU                   TSSOP16                   analog-devices          2
+ISM_SW                              PINHD-1X3CB                1X03-CLEANBIG             adafruit                3
+LED1                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED2                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED3                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED4                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED5                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED6                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED7                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+LED8                                LEDCHIP-LED0603            CHIP-LED0603              adafruit                4
+P1       53048-0810                 53048-0810                 53048-0810                con-molex-picoblade     2
+P2       53048-0810                 53048-0810                 53048-0810                con-molex-picoblade     2
+POWER_SW                            PINHD-1X2                  1X02                      pinhead                 3
+R1       1k                         R-US_R0603                 R0603                     rcl                     3
+R2       2.2k                       R-US_R0603                 R0603                     rcl                     3
+R3       288                        R-US_R0603                 R0603                     adafruit                3
+R4       470                        R-US_R0603                 R0603                     rcl                     4
+R5       100k                       R-US_R0603                 R0603                     rcl                     3
+R6       100k                       R-US_R0603                 R0603                     rcl                     3
+R7       100k                       R-US_R0603                 R0603                     rcl                     3
+R8       470                        R-US_R0603                 R0603                     rcl                     4
+R9       470                        R-US_R0603                 R0603                     rcl                     4
+R10      470                        R-US_R0603                 R0603                     rcl                     4
+R11      470                        R-US_R0603                 R0603                     rcl                     4
+R12      470                        R-US_R0603                 R0603                     rcl                     4
+R13      200k                       R-US_R0603                 R0603                     rcl                     1
+R14      2.2k                       R-US_R0603                 R0603                     rcl                     1
+R15      2.2k                       R-US_R0603                 R0603                     rcl                     1
+R16      470                        R-US_R0603                 R0603                     rcl                     4
+R17      470                        R-US_R0603                 R0603                     rcl                     4
+R18      100k                       R-US_R0603                 R0603                     rcl                     3
+U$1      TEENSY_3.5/3.6_BASIC       TEENSY_3.5/3.6_BASIC       TEENSY_3.5/3.6_BASIC      Teensy356               1
+U$29     AQV252GA                   AQV252GA                   DIP6                      TI_radio                3
+U$34     MAX3232E                   MAX3232E                   SSOP-16                   TI_radio                2
+U1       MCP73831/OT                MCP73831/OT                SOT23-5L                  adafruit                3
+U2       LP2985IM5-1.8/NOPB         LP2985IM5-1.8/NOPB         MF05A                     gsynth                  3
+U3       COM-13909                  COM-13909                  MOD_COM-13909             COM-13909               4
+U4       ADXL377                    ACCEL_ADXL377              LFCSP16_LQ                microbuilder            1
+U5       ICM-20948                  ICM-20948                  QFN40P300X300X105-25N     ICM-20948               1
+U6       PCA9306DCUR                PCA9306DCUR                DCU8                      gsynth                  1
+U7       SN74LVC1T45DRLR            SN74LVC1T45DRLR            DRL6                      gsynth                  1
+U8       SN74LVC1T45DRLR            SN74LVC1T45DRLR            DRL6                      gsynth                  1
+U9       DMP3099L                   DMP3099L                   SOT23                     gsynth                  3
+U10      MAX31855KASA+T21-0041B_8-M MAX31855KASA+T21-0041B_8-M 21-0041B_8-M              max31855                2
+U11      MAX31855KASA+T21-0041B_8-M MAX31855KASA+T21-0041B_8-M 21-0041B_8-M              max31855                2
+X3                                  HEADER_POS6_43650-0600     43650-0600                con-molex-micro-fit-3_0 3
