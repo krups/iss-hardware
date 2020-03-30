@@ -1,2 +1,3 @@
 # iss-hardware
-Board files and materials for the ISS mission.
+Board files, schematics, DXF, BOM, partslist and documentation pdf for the KREPE ISS mission.
+
