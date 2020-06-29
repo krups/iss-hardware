@@ -1,0 +1,36 @@
+Arduino Pin     Net
+0               CAPSENSE0
+1               CAPSENSE1
+3               LED1
+4               LED2
+5               LED3
+6               LED4
+7               LED5
+9               CS_ISM
+11              MOSI
+12              MISO
+13              SCLK
+14              BAT_STAT
+15              CAPSENSE2
+16              MUX0
+17              MUX1
+18              SDA
+19              SCL
+20              CS@TC1
+21              CS@TC2
+22 A8           BAT_SENSE
+23              ACT (IRIDIUM ON/OFF)
+28              RESET_ISM
+28              INT_ISM
+30              CAPSENSE3
+31              RIRI (IRIDIUM OUTPUT)
+32              TIRI (IRIDIUM INPUT)
+33              RADIO_OFF_SIG
+34              FSYNC (IMU)
+35              INT (IMU)
+36              XOUT (A17)
+37              YOUT (A18)
+38              ZOUT (A19)           
+A21             IRIDIUM_TX_ACT
+A22             IRIDIUM_STATUS
+

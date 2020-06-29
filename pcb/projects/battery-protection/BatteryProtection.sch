@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.05" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1616,10 +1616,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C1" library="SparkFun-Capacitors" deviceset="0.33UF/330NF" device="-0805-50V-10%" value=".1uF"/>
 <part name="FET2" library="KRUPS" deviceset="CSD16406Q3" device=""/>
 <part name="FET1" library="KRUPS" deviceset="CSD16406Q3" device=""/>
-<part name="H1" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="2.8" package3d_urn="urn:adsk.eagle:package:14271/1"/>
 <part name="H2" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="2.8" package3d_urn="urn:adsk.eagle:package:14271/1"/>
 <part name="H3" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="2.8" package3d_urn="urn:adsk.eagle:package:14271/1"/>
-<part name="H4" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="2.8" package3d_urn="urn:adsk.eagle:package:14271/1"/>
 <part name="CELL+" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-PAD-ROUND" device="2.8" package3d_urn="urn:adsk.eagle:package:14281/1"/>
 <part name="CELL-" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-PAD-ROUND" device="2.8" package3d_urn="urn:adsk.eagle:package:14281/1"/>
 <part name="PACK-" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-PAD-ROUND" device="2.8" package3d_urn="urn:adsk.eagle:package:14281/1"/>
@@ -1659,10 +1657,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="107.0356" y="97.5614" size="2.0828" layer="95" ratio="6" rot="SMR180"/>
 <attribute name="VALUE" x="96.2406" y="92.4814" size="2.0828" layer="96" ratio="6" rot="SMR180"/>
 </instance>
-<instance part="H1" gate="G$1" x="27.94" y="58.42" smashed="yes">
-<attribute name="NAME" x="29.972" y="59.0042" size="1.778" layer="95"/>
-<attribute name="VALUE" x="29.972" y="55.9562" size="1.778" layer="96"/>
-</instance>
 <instance part="H2" gate="G$1" x="27.94" y="48.26" smashed="yes">
 <attribute name="NAME" x="29.972" y="48.8442" size="1.778" layer="95"/>
 <attribute name="VALUE" x="29.972" y="45.7962" size="1.778" layer="96"/>
@@ -1670,10 +1664,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="H3" gate="G$1" x="55.88" y="58.42" smashed="yes">
 <attribute name="NAME" x="57.912" y="59.0042" size="1.778" layer="95"/>
 <attribute name="VALUE" x="57.912" y="55.9562" size="1.778" layer="96"/>
-</instance>
-<instance part="H4" gate="G$1" x="55.88" y="48.26" smashed="yes">
-<attribute name="NAME" x="57.912" y="48.8442" size="1.778" layer="95"/>
-<attribute name="VALUE" x="57.912" y="45.7962" size="1.778" layer="96"/>
 </instance>
 <instance part="CELL+" gate="G$1" x="170.18" y="139.7" smashed="yes">
 <attribute name="NAME" x="172.974" y="140.2842" size="1.778" layer="95"/>

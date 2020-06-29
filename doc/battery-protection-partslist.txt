@@ -1,0 +1,20 @@
+Partlist
+
+Exported from BatteryProtection.sch at 6/27/20 10:18 AM
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value              Device                    Package  Library             Sheet
+
+ C1       .1uF               0.33UF/330NF-0805-50V-10% 0805     SparkFun-Capacitors 1
+CELL+    MOUNT-PAD-ROUND2.8 MOUNT-PAD-ROUND2.8        2,8-PAD  holes               1
+CELL-    MOUNT-PAD-ROUND2.8 MOUNT-PAD-ROUND2.8        2,8-PAD  holes               1
+ FET1     CSD16406Q3         CSD16406Q3                DQG0008A KRUPS               1
+ FET2     CSD16406Q3         CSD16406Q3                DQG0008A KRUPS               1
+PACK+    MOUNT-PAD-ROUND2.8 MOUNT-PAD-ROUND2.8        2,8-PAD  holes               1
+PACK-    MOUNT-PAD-ROUND2.8 MOUNT-PAD-ROUND2.8        2,8-PAD  holes               1
+ R1       330                33KOHM-0603-1/10W-1%      0603     SparkFun-Resistors  1
+ R2       2.2k               33KOHM-0603-1/10W-1%      0603     SparkFun-Resistors  1
+ U1       BQ29700DSET        BQ29700DSET               DSE6     KRUPS               1
