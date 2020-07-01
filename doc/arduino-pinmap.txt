@@ -18,8 +18,10 @@ Arduino Pin     Net
 19              SCL
 20              CS@TC1
 21              CS@TC2
-22 A8           BAT_SENSE
+A8              BAT_SENSE (A8)
 23              ACT (IRIDIUM ON/OFF)
+25              TC1_FAULT (ACTIVE LOW)
+26              TC2_FAULT (ACTIVE LOW)
 28              RESET_ISM
 28              INT_ISM
 30              CAPSENSE3
