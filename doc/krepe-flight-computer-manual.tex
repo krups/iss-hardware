@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-\title{KREPE Control Board}
+\title{KREPE Flight Computer Hardware Manual}
 \author{Matt Ruffner}
 \date{March 2020}
 
@@ -72,7 +72,33 @@ The \texttt{ISM\_SW} header is meant to enable and disable the RFM69 debug radio
 \subsection{Secondary Activation}
 Once primary activation is complete and the flight computer is in standby mode, sensors are polled to check for conditions necessary for secondary activation. Secondary activation is software based and only engaged once the KREPE probe has separated from its protective metal enclosure. No radio transmissions are attempted before secondary activation. 
 
-Thermocouples and a capacitive sensing subsystem are polled to check for conditions sufficient for secondary activation. A heating of the metal KREPE enclosure is necessary to melt the plastic bolts that hold it together. This ambient temperature increase of the probe is the primary criteria for secondary activation. The presence of this metal enclosure is also detected by capacitive sensors on the KREPE probe. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
+Thermocouples and the capacitive sensing subsystem are polled to check for conditions sufficient for secondary activation. A heating of the metal KREPE enclosure is necessary to melt the plastic bolts that hold it together. This ambient temperature increase of the probe is the primary criteria for secondary activation. The presence of this metal enclosure is also detected by capacitive sensors on the KREPE probe. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
+
+An activation redundancy processor (ARP) was added in Rev. 1.1 of the flight computer, if the flight computer needs to be tested without the ARP, there is a solder jumper on the bottom of the PCB (SJ1) that, when shorted together, bypasses the AND gate that controls Iridium radio activation, reducing the system to single activation.
+
+\section{Activation Redundancy Processor}
+\label{actred}
+Revision 1.1 of the KREPE flight computer adds a SAMD21 Cortex-M0 safety processor to also monitor the status and reading of all thermocouples onboard the KREPE capsule. Section \ref{actred} discusses this more. An overview of the secondary activation redundancy this safety processor provides is shown in Fig. \ref{fig:actred}.
+
+With the ARP in place, there are two separate CBCS in place in the KREPE capsule, meaning that an erroneous act from one CBCS is not sufficient to activate the iridium radio. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/redundant-activation.png}
+  \caption{Secondary activation rendundancy provided by the safety processor.}
+  \label{fig:actred}
+\end{figure}
+
+\subsection{Bootloading the ARP}
+The SAMD21 must be flashed with the UF2 bootloader
+TODO: find link to adafruit bootloader and tutorial on flashing  ARM chips with Raspberry pi using OpenOCD.
+
+show picture of header for programming, reset pin, swclk, swdio pins. 
+\subsection{Programming the ARP}
+The microUSB port next to the ARP (CN1) is used to upload program flash using the Arduino IDE. This is only possible once the bootloader has been flashed with OpenOCD.
+
+\subsection{ARP Hardware Connections}
+Show which pins connect into the SPI bus and which goes to the AND gate for iridium activation.
 
 \section{Subsystems}
 
@@ -104,8 +130,8 @@ Thermocouples and a capacitive sensing subsystem are polled to check for conditi
     13 & SCLK     &  SPI Clock \\
     12 & MISO     &  Master In Subject Out \\
     11 & MOSI     &  Master Out Subject In \\
-    20 & CS@TC1 & U10 (MAX31855) chip select, active low \\
-    21 & CS@TC2 & U11 (MAX31855) chip select, active low  \\
+    20 & CS@TC1 & MAX31856 chip select, active low \\
+    21 & CS@TC2 & MAX31856 chip select, active low  \\
     9 & CS\_ISM     & RFM69 chip select, active low  \\
     \hline
     32 & TIRI     & Iridium TX UART \\
@@ -145,15 +171,16 @@ We are using the A3LA-RS type modem seen on the NAL Research site (\url{http://w
 \end{figure}
   
 \subsubsection{Radio Power Control}
+This is the partial activation source for the Iridium radio. Rev. 1.1 the flight computer features a secondary safety processor to continually monitor the thermocouple measurement circuits in parallel with the Teensy. An AND gate controls the power to the solid state relay controlling power to the Iridium radio. THe secondary processor is connected to the other input of this AND gate to make sure that erroneous action on behalf the teensy (or secondary safety processor) is not able to solely activate the radio. 
 \begin{table}[H]
     \centering
     \begin{tabular}{l|l|c|r}
    Teensy Pin & Net Name     &  Description  & Teensy Configuration \\
     \hline
-    23 & ACT   & Iridium activation, active high & \texttt{OUTPUT} \\
+    23 & PRI\_ACT   & Primary Iridium activation, active high & \texttt{OUTPUT} 
     \end{tabular}
     \caption{Pin controlling power to the iridium satellite radio.}
-    \label{tab:pins_iridium}
+    \label{tab:pins-iridium}
 \end{table}
 
 \subsection{Thermocouple Measurement Interface}
@@ -163,17 +190,42 @@ Note: this board features an update thermocouple interface IC than the previous 
     \begin{tabular}{c|c|c|r}
     Teensy Pin & Net Name  & Description   & Teensy Configuration \\
     \hline 
-    16 & MUX0 & IC1 and IC2 mux. select pin & \texttt{OUTPUT} \\
-    17 & MUX1 & IC1 and IC2 mux. select pin & \texttt{OUTPUT} \\ 
+    16 & MUX0 & MUX select pin 0 & \texttt{OUTPUT} \\
+    17 & MUX1 & MUX select pin 1 & \texttt{OUTPUT} \\
+    25 & TC1\_FAULT & U13 fault (active low) & \texttt{INPUT} \\
+    26 & TC2\_FAULT & U12 fault (active low) & \texttt{INPUT} \\ 
     \end{tabular}
-    \caption{Analog mux selection pins.}
+    \caption{Analog mux selection and thermocouple fault status pins.}
     \label{tab:pins_thermo}
 \end{table}
 
 \subsubsection{Thermocouple Connections}
-See datasheet and connections in the relevant schematics in Fig. \ref{fig:page1_1} in Appendix \ref{appa}.
+The 8 thermocouple connections are done with 2 analog multiplexers IC1 and IC3 (MUX1 and MUX2). The MUX select pins go to both of these chips to select a certain channel. The table of MUX(0/1) select values versus two selected thermocouples are shown in Table \ref{tab:tc-mux-sel}.
 
-TODO: image of connector placements on board to facilitate wiring of a new connector.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c}
+    MUX0 & MUX1 & TC number \\
+    \hline
+    0 & 0 & 1, 5 \\
+    0 & 1 & 2, 6 \\
+    1 & 0 & 3, 7 \\
+    1 & 1 & 4, 8
+  \end{tabular}
+  \caption{Truth table for multiplexer select pins and their relation to the pairs of thermocouples that are selected.}
+  \label{tab:tc-mux-sel}
+\end{table}
+%
+Pin connections on headers P1 and P2 show the connections for TC 1-8 lead wire pairs. Figure \ref{fig:tc-conn} shows the pinout on the silkscreen.
+%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/krepe-thermocouples.png}
+    \caption{Thermocouple connection wiring with resepect to the analog mux chips IC3 (MUX2) and IC1 (MUX1).}
+    \label{fig:tc-conn}
+\end{figure}
+
+
 
 
 \subsection{Motion Sensor Connections}
@@ -199,7 +251,7 @@ TODO: image of connector placements on board to facilitate wiring of a new conne
 
 Charge current is limited to to 450 mA. Charge power can be delivered via Teensy USB or the \texttt{CHARGE} header. Charging input voltage is expected to be 5 volts.
 
-For battery protection, the adafruit batteries we use (\url{https://www.adafruit.com/product/354}) have built in protection circuitry. Charge management is handled by an MCP73831 IC (\url{https://www.microchip.com/wwwproducts/en/MCP73831}), with status connections to the Teensy as shown in Table \ref{tab:pins_battery}. Schematics and electrical connections are shown in Fig. \ref{fig:page1_3} in Appendix \ref{appa}.
+For battery protection, the adafruit batteries we use (\url{https://www.adafruit.com/product/354}) have built in protection circuitry. Charge management is handled by an MCP73831 IC (\url{https://www.microchip.com/wwwproducts/en/MCP73831}), with status connections to the Teensy as shown in Table \ref{tab:pins-battery}. Schematics and electrical connections are shown in Fig. \ref{fig:page1_3} in Appendix \ref{appa}.
 
 \subsubsection{Battery Status Interface}
 \begin{table}[H]
@@ -208,19 +260,19 @@ For battery protection, the adafruit batteries we use (\url{https://www.adafruit
     Teensy Pin & Net Name  & Description   & Teensy Configuration \\
     \hline 
     14 & BAT\_STAT & LiPo charge state & \texttt{OUTPUT} \\
-    22 A8 & BAT\_SENSE    &  Halved battery voltage for monitoring &   \texttt{INPUT} \\
+    22 A8 & BAT\_SENSE    &  Halved battery voltage for monitoring &   \texttt{INPUT} 
     \end{tabular}
     \caption{Pins to monitor battery voltage and charging status.}
-    \label{tab:pins_battery}
+    \label{tab:pins-battery}
 \end{table}
 
 \subsubsection{Battery Protection}
-Protection circuitry is implemented on the flight board to support 2P1S LiPo packs for system power. We are using a TI BQ2970 Voltage and Current Protection IC (\url{ http://www.ti.com/lit/ds/symlink/bq2970.pdf}). Protection circuitry as implemented on the KREPE flight computer PCB is shown in Fig. \ref{fig:bat-protec}.
+Protection circuitry is implemented on the flight board to support 2P1S LiPo packs for system power. We are using a TI BQ2970 Voltage and Current Protection IC (\url{ http://www.ti.com/lit/ds/symlink/bq2970.pdf}). Protection circuitry as implemented on the KREPE flight computer PCB is shown in Fig. \ref{fig:bat-protec}.  Cell+ and Cell- attach to the battery pack and Pack+/Pack- face system power. This protection circuitry is upstream of the primary activation switch.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/battery_protection_schematic.png}
-    \caption{Battery protection circuitry. Cell+ and Cell- attach to the battery pack and Pack+/Pack- face system power. This protection circuitry is upstream of the primary activation switch.}
+    \caption{Battery protection circuitry.}
     \label{fig:bat-protec}
 \end{figure}
 
@@ -229,7 +281,7 @@ Renderings of the bottom and top of the battery protection PCB can be seen in Fi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/BatteryProtection-render-top.png}
+    \includegraphics[width=0.3\textwidth]{images/BatteryProtection-render-top.png}
     \caption{Rendering of the top of the battery protection PCB.}
     \label{fig:bat-top}
 \end{figure}
@@ -237,7 +289,7 @@ Renderings of the bottom and top of the battery protection PCB can be seen in Fi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/BatteryProtection-render-top.png}
+    \includegraphics[width=0.3\textwidth]{images/BatteryProtection-render-top.png}
     \caption{Rendering of the bottom of the battery protection PCB.}
     \label{fig:bat-bottom}
 \end{figure}
@@ -287,7 +339,7 @@ TODO: simple sketch that tests a newly assembled board to make sure the IMU, acc
     \centering
     \includegraphics[width=\textwidth]{images/page1.png}
     \caption{Page one of schematics.}
-    \label{fig:page1_2}
+    \label{fig:page1-2}
 \end{figure}
 
 \begin{figure}[H]
@@ -301,14 +353,21 @@ TODO: simple sketch that tests a newly assembled board to make sure the IMU, acc
     \centering
     \includegraphics[width=\textwidth]{images/page3.png}
     \caption{Page three of schematics.}
-    \label{fig:page1_3}
+    \label{fig:page1-3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/page4.png}
     \caption{Page four of schematics.}
-    \label{fig:page1_4}
+    \label{fig:page1-4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/page5.png}
+    \caption{Page five of schematics.}
+    \label{fig:page1-5}
 \end{figure}
 
 

@@ -22,6 +22,7 @@ A8              BAT_SENSE (A8)
 23              ACT (IRIDIUM ON/OFF)
 25              TC1_FAULT (ACTIVE LOW)
 26              TC2_FAULT (ACTIVE LOW)
+27              SEC_CS
 28              RESET_ISM
 28              INT_ISM
 30              CAPSENSE3
@@ -32,7 +33,8 @@ A8              BAT_SENSE (A8)
 35              INT (IMU)
 36              XOUT (A17)
 37              YOUT (A18)
-38              ZOUT (A19)           
+38              ZOUT (A19) 
+39              SEC_EN          
 A21             IRIDIUM_TX_ACT
 A22             IRIDIUM_STATUS
 

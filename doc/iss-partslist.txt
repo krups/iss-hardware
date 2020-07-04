@@ -1,91 +1,100 @@
 Partlist
 
-Exported from kreme-iss.brd at 6/30/20 4:50 PM
+Exported from flight-computer.sch at 7/3/20 9:59 PM
 
 EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
 
 Assembly variant: 
 
-Part          Value                Package                   Library                 Position (mil)        Orientation
+Part          Value                Device                 Package                   Library                 Sheet
 
- ACTIVATION_SW                      1X02                      pinhead                 (200 1400)            R90
- ANT           U.FL-R-SMT-1(10)     CONN_R-SMT-1(10)          ufl                     (3840 1220)           R90
- BATTERY       2 PIN JST            JST_S2B-PH-SM4-TB(LF)(SN) S2B-PH-SM4-TB_LF__SN_   (450 1785)            R270
- C1            10uF                 C0603                     rcl                     (600 1785)            R270
- C2            1uF                  C0603                     rcl                     (450 1500)            R90
- C3            0.1uF                C0603                     adafruit                (3135 555)            R90
- C4            0.1uF                C0603                     adafruit                (3690 550)            R90
- C5            0.1uF                C0603                     adafruit                (3360 980)            R0
- C6            0.1uF                C0603                     adafruit                (3110 900)            R90
- C8            10uF                 C0603                     adafruit                (2370 1290)           R270
- C9            0.01uF               C0603                     adafruit                (2040 1190)           R90
- C10           0.01uF               C0603                     adafruit                (2100 1190)           R90
- C11           0.01uF               C0603                     adafruit                (2230 1160)           R0
- C14           0.1uF                C0603                     adafruit                (450 2150)            R0
- C15           0.1uF                C0603                     rcl                     (1850 1300)           R180
- C16           0.1uF                C0603                     rcl                     (2045 1500)           R90
- C17           0.1uF                C0603                     rcl                     (1715 1660)           R270
- C18           0.1uF                C0603                     rcl                     (1150 1550)           R270
- C19           2.2uF                C0603                     rcl                     (1300 1670)           R180
- C20           0.01uF               C0603                     rcl                     (1305 1445)           R180
- C22           1uF                  C0603                     rcl                     (3815 1570)           R90
- C24           0.01uF               C0603                     adafruit                (3420.79995 130.20005) MR180
- C25           0.01uF               C0603                     adafruit                (3417.19993 403.80007) MR180
- C26           0.01uF               C0603                     adafruit                (3421.19993 185)      MR180
- C27           0.01uF               C0603                     adafruit                (3421.39998 347.60002) MR180
- C28           0.01uF               C0603                     adafruit                (2860.79995 138.20005) MR180
- C29           0.01uF               C0603                     adafruit                (2860.79995 190.20005) MR180
- C30           0.01uF               C0603                     adafruit                (2860.79995 392.20005) MR180
- C31           0.01uF               C0603                     adafruit                (2860.79995 344.20005) MR180
- C32           0.1uF                C0603                     adafruit                (2820 980)            R0
- C33           0.1uF                C0603                     adafruit                (3650 810)            R270
- CAPSENSE      53048-0810           53048-0810                con-molex-picoblade     (1880 230)            R0
- CHARGE                             1X02                      pinhead                 (385 1275)            R270
- CHG           RED                  LED-0603                  SparkFun-LED            (750 1850)            R0
- D3            MBR120               SOD123FL                  gsynth                  (600 1350)            R0
- H1            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (3800 200)            R0
- H2            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (2300 200)            R0
- H3            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (200 200)             R0
- H4            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (2300 2200)           R0
- H5            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (3800 2200)           R0
- H6            MOUNT-PAD-ROUND2.8   2,8-PAD                   holes                   (200 2200)            R0
- IC1           ADG609RU             TSSOP16                   analog-devices          (3420 500)            R0
- IC3           ADG609RU             TSSOP16                   analog-devices          (2870 500)            R0
- ISM_SW                             1X03-CLEANBIG             adafruit                (3150 2200)           R0
- LED1                               CHIP-LED0603              adafruit                (540 270)             R270
- LED2                               CHIP-LED0603              adafruit                (710 270)             R90
- LED3                               CHIP-LED0603              adafruit                (1010 270)            R90
- LED4                               CHIP-LED0603              adafruit                (1200 270)            R90
- LED5                               CHIP-LED0603              adafruit                (1400 200)            R90
- P1            53048-0810           53048-0810                con-molex-picoblade     (3418.39998 264.80007) R0
- P2            53048-0810           53048-0810                con-molex-picoblade     (2860 265)            R0
- R1            1k                   R0603                     rcl                     (900 1820)            R90
- R2            2.2k                 R0603                     rcl                     (950 1500)            R180
- R3            288                  R0603                     adafruit                (450 2250)            R180
- R4            470                  R0603                     rcl                     (540 350)             R180
- R5            100k                 R0603                     rcl                     (800 1350)            R0
- R6            100k                 R0603                     rcl                     (790 1235)            R270
- R7            100k                 R0603                     rcl                     (705 1235)            R90
- R8            470                  R0603                     rcl                     (710 350)             R0
- R9            470                  R0603                     rcl                     (1010 340)            R0
- R10           470                  R0603                     rcl                     (1200 340)            R0
- R11           470                  R0603                     rcl                     (1400 270)            R0
- R13           200k                 R0603                     rcl                     (1170 1235)           R90
- R14           2.2k                 R0603                     rcl                     (2050 1620)           R0
- R15           2.2k                 R0603                     rcl                     (2050 1700)           R0
- R18           100k                 R0603                     rcl                     (2510 1200)           R90
- U$1           TEENSY_3.5/3.6_BASIC TEENSY_3.5/3.6_BASIC      Teensy356               (1300 750)            R0
- U$29          AQV252GA             DIP6                      TI_radio                (750 2150)            R0
- U1            MCP73831/OT          SOT23-5L                  adafruit                (850 1650)            R180
- U2            LP2985IM5-1.8/NOPB   MF05A                     gsynth                  (1300 1550)           R0
- U3            COM-13909            MOD_COM-13909             COM-13909               (3380 1495)           R0
- U4            ADXL377              LFCSP16_LQ                microbuilder            (2250 1300)           R0
- U5            ICM-20948            QFN40P300X300X105-25N     ICM-20948               (1850 1500)           R270
- U6            PCA9306DCUR          DCU8                      gsynth                  (1300 1300)           R180
- U7            SN74LVC1T45DRLR      DRL6                      gsynth                  (1575 1495)           R0
- U8            SN74LVC1T45DRLR      DRL6                      gsynth                  (1575 1650)           R0
- U9            DMP3099L             SOT23                     gsynth                  (650 1550)            R180
- U12           MAX31856MUD+         SOP65P640X110-14N         MAX31856                (2900 830)            R180
- U13           MAX31856MUD+         SOP65P640X110-14N         MAX31856                (3450 830)            R180
- VBAT_PTH                           1X02                      pinhead                 (230 1785)            R90
- X3                                 43650-0600                con-molex-micro-fit-3_0 (1500 2100)           R180
+ACTIVATION_SW                      PINHD-1X2              1X02                      pinhead                 3
+ANT           U.FL-R-SMT-1(10)     U.FL-R-SMT-1(10)       CONN_R-SMT-1(10)          ufl                     4
+BATTERY       2 PIN JST            S2B-PH-SM4-TB(LF)(SN)  JST_S2B-PH-SM4-TB(LF)(SN) S2B-PH-SM4-TB_LF__SN_   3
+C1            10uF                 C-EUC0603              C0603                     rcl                     3
+C2            1uF                  C-EUC0603              C0603                     rcl                     3
+C3            0.1uF                C-USC0603              C0603                     adafruit                2
+C4            0.1uF                C-USC0603              C0603                     adafruit                2
+C5            0.1uF                C-USC0603              C0603                     adafruit                2
+C6            0.1uF                C-USC0603              C0603                     adafruit                2
+C7            1uF                  CAP_CERAMIC0603_NO     0603-NO                   microbuilder            5
+C8            10uF                 C-USC0603              C0603                     adafruit                1
+C9            0.01uF               C-USC0603              C0603                     adafruit                1
+C10           0.01uF               C-USC0603              C0603                     adafruit                1
+C11           0.01uF               C-USC0603              C0603                     adafruit                1
+C14           0.1uF                C-USC0603              C0603                     adafruit                3
+C15           0.1uF                C-EUC0603              C0603                     rcl                     1
+C16           0.1uF                C-EUC0603              C0603                     rcl                     1
+C17           0.1uF                C-EUC0603              C0603                     rcl                     1
+C18           0.1uF                C-USC0603              C0603                     rcl                     3
+C19           2.2uF                C-USC0603              C0603                     rcl                     3
+C20           0.01uF               C-USC0603              C0603                     rcl                     3
+C22           1uF                  C-EUC0603              C0603                     rcl                     4
+C24           0.01uF               C-USC0603              C0603                     adafruit                2
+C25           0.01uF               C-USC0603              C0603                     adafruit                2
+C26           0.01uF               C-USC0603              C0603                     adafruit                2
+C27           0.01uF               C-USC0603              C0603                     adafruit                2
+C28           0.01uF               C-USC0603              C0603                     adafruit                2
+C29           0.01uF               C-USC0603              C0603                     adafruit                2
+C30           0.01uF               C-USC0603              C0603                     adafruit                2
+C31           0.01uF               C-USC0603              C0603                     adafruit                2
+C32           0.1uF                C-USC0603              C0603                     adafruit                2
+C33           0.1uF                C-USC0603              C0603                     adafruit                2
+CAPSENSE      53048-0810           53048-0810             53048-0810                con-molex-picoblade     4
+CHARGE                             PINHD-1X2              1X02                      pinhead                 3
+CHG           RED                  LED-RED0603            LED-0603                  SparkFun-LED            3
+CN1           4U#20329             USB_MICRO_20329_V2     4UCONN_20329_V2           microbuilder            5
+D3            MBR120               MBR120                 SOD123FL                  gsynth                  3
+H1            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+H2            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+H3            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+H4            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+H5            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+H6            MOUNT-PAD-ROUND2.8   MOUNT-PAD-ROUND2.8     2,8-PAD                   holes                   1
+IC1           ADG609RU             ADG609RU               TSSOP16                   analog-devices          2
+IC2           ATSAMD21E            ATSAMD21E              QFN32_5MM                 microbuilder            5
+IC3           ADG609RU             ADG609RU               TSSOP16                   analog-devices          2
+JP1                                PINHD-1X4              1X04                      pinhead                 5
+JP2                                PINHD-1X2              1X02                      pinhead                 3
+LED1                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
+LED2                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
+LED3                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
+LED4                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
+LED5                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
+P1            53048-0810           53048-0810             53048-0810                con-molex-picoblade     2
+P2            53048-0810           53048-0810             53048-0810                con-molex-picoblade     2
+R1            1k                   R-US_R0603             R0603                     rcl                     3
+R2            2.2k                 R-US_R0603             R0603                     rcl                     3
+R3            288                  R-US_R0603             R0603                     adafruit                3
+R4            470                  R-US_R0603             R0603                     rcl                     4
+R5            100k                 R-US_R0603             R0603                     rcl                     3
+R6            100k                 R-US_R0603             R0603                     rcl                     3
+R7            100k                 R-US_R0603             R0603                     rcl                     3
+R8            470                  R-US_R0603             R0603                     rcl                     4
+R9            470                  R-US_R0603             R0603                     rcl                     4
+R10           470                  R-US_R0603             R0603                     rcl                     4
+R11           470                  R-US_R0603             R0603                     rcl                     4
+R12           2.2k                 R-US_R0603             R0603                     rcl                     1
+R13           200k                 R-US_R0603             R0603                     rcl                     1
+R14           2.2k                 R-US_R0603             R0603                     rcl                     1
+R15           2.2k                 R-US_R0603             R0603                     rcl                     1
+R16           2.2k                 R-US_R0603             R0603                     rcl                     1
+R17           470                  R-US_R0603             R0603                     rcl                     5
+R18           100k                 R-US_R0603             R0603                     rcl                     3
+SJ1                                SJ                     SJ                        jumper                  5
+U$1           TEENSY_3.5/3.6_BASIC TEENSY_3.5/3.6_BASIC   TEENSY_3.5/3.6_BASIC      Teensy356               1
+U$29          AQV252GA             AQV252GA               DIP6                      TI_radio                3
+U1            MCP73831/OT          MCP73831/OT            SOT23-5L                  adafruit                3
+U2            LP2985IM5-1.8/NOPB   LP2985IM5-1.8/NOPB     MF05A                     gsynth                  3
+U3            COM-13909            COM-13909              MOD_COM-13909             COM-13909               4
+U4            ADXL377              ACCEL_ADXL377          LFCSP16_LQ                microbuilder            1
+U5            ICM-20948            ICM-20948              QFN40P300X300X105-25N     ICM-20948               1
+U6            PCA9306DCUR          PCA9306DCUR            DCU8                      gsynth                  1
+U7            SN74LVC1T45DRLR      SN74LVC1T45DRLR        DRL6                      gsynth                  1
+U8            SN74LVC1T45DRLR      SN74LVC1T45DRLR        DRL6                      gsynth                  1
+U9            DMP3099L             DMP3099L               SOT23                     gsynth                  3
+U10           SN74LVC1G08DCKR      SN74LVC1G08DCKR        SOT65P210X110-5N          SN74LVC1G08DCKR         5
+U12           MAX31856MUD+         MAX31856MUD+           SOP65P640X110-14N         MAX31856                2
+U13           MAX31856MUD+         MAX31856MUD+           SOP65P640X110-14N         MAX31856                2
+VBAT_PTH                           PINHD-1X2              1X02                      pinhead                 3
+X3                                 HEADER_POS6_43650-0600 43650-0600                con-molex-micro-fit-3_0 3
