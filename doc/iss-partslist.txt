@@ -1,6 +1,6 @@
 Partlist
 
-Exported from flight-computer.sch at 7/3/20 9:59 PM
+Exported from flight-computer.sch at 7/5/20 4:54 PM
 
 EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
 
@@ -56,6 +56,7 @@ IC2           ATSAMD21E            ATSAMD21E              QFN32_5MM             
 IC3           ADG609RU             ADG609RU               TSSOP16                   analog-devices          2
 JP1                                PINHD-1X4              1X04                      pinhead                 5
 JP2                                PINHD-1X2              1X02                      pinhead                 3
+JP3                                PINHD-1X2              1X02                      pinhead                 4
 LED1                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
 LED2                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
 LED3                               LEDCHIP-LED0603        CHIP-LED0603              adafruit                4
@@ -79,8 +80,9 @@ R13           200k                 R-US_R0603             R0603                 
 R14           2.2k                 R-US_R0603             R0603                     rcl                     1
 R15           2.2k                 R-US_R0603             R0603                     rcl                     1
 R16           2.2k                 R-US_R0603             R0603                     rcl                     1
-R17           470                  R-US_R0603             R0603                     rcl                     5
+R17           10k                  R-US_R0603             R0603                     rcl                     5
 R18           100k                 R-US_R0603             R0603                     rcl                     3
+R19           100                  R-US_R0603             R0603                     rcl                     4
 SJ1                                SJ                     SJ                        jumper                  5
 U$1           TEENSY_3.5/3.6_BASIC TEENSY_3.5/3.6_BASIC   TEENSY_3.5/3.6_BASIC      Teensy356               1
 U$29          AQV252GA             AQV252GA               DIP6                      TI_radio                3

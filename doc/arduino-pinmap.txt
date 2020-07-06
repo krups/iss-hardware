@@ -20,6 +20,7 @@ Arduino Pin     Net
 21              CS@TC2
 A8              BAT_SENSE (A8)
 23              ACT (IRIDIUM ON/OFF)
+24              BUZZER
 25              TC1_FAULT (ACTIVE LOW)
 26              TC2_FAULT (ACTIVE LOW)
 27              SEC_CS
