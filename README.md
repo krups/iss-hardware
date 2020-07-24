@@ -12,23 +12,23 @@ Often used information is repeated in this document for convenience
 
 ### Libraries and datasheets for components
 - Thermocouple to digital converter
- -  [MAX31856 Library](https://github.com/adafruit/Adafruit_MAX31856)
- -  [MAX31856 Datasheet](https://datasheets.maximintegrated.com/en/ds/MAX31856.pdf)
+  -  [MAX31856 Library](https://github.com/adafruit/Adafruit_MAX31856)
+  -  [MAX31856 Datasheet](https://datasheets.maximintegrated.com/en/ds/MAX31856.pdf)
 - Analog Multiplexer
- - [ADG609BRUZ datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADG608_609.pdf)
+  - [ADG609BRUZ datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADG608_609.pdf)
 - Debug Radio
- - [RFM69HCW](https://www.digikey.com/product-detail/en/sparkfun-electronics/COM-13909/1568-1394-ND/6023504)
+  - [RFM69HCW](https://www.digikey.com/product-detail/en/sparkfun-electronics/COM-13909/1568-1394-ND/6023504)
 - 9-axis IMU
- - [DPE Library](https://github.com/drcpattison/DPEng_ICM20948_AK09916)
- - [Sparkfun Library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary)
- - [Datasheet](https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf)
+  - [DPE Library](https://github.com/drcpattison/DPEng_ICM20948_AK09916)
+  - [Sparkfun Library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary)
+  - [Datasheet](https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf)
 - Solid state relay
- - [Datasheet](https://www.digikey.com/product-detail/en/panasonic-electric-works/AQV252GAX/255-3375-1-ND/2810282)
+  - [Datasheet](https://www.digikey.com/product-detail/en/panasonic-electric-works/AQV252GAX/255-3375-1-ND/2810282)
 - High G Accelerometer
- - [Datasheet](https://www.digikey.com/product-detail/en/analog-devices-inc/ADXL377BCPZ-RL7/ADXL377BCPZ-RL7CT-ND/3678489)
+  - [Datasheet](https://www.digikey.com/product-detail/en/analog-devices-inc/ADXL377BCPZ-RL7/ADXL377BCPZ-RL7CT-ND/3678489)
 - Safety Co-processor
- - [Datasheet](https://www.digikey.com/product-detail/en/microchip-technology/ATSAMD21E16B-MFT/ATSAMD21E16B-MFTCT-ND/5455793)
- - [Arduino variant reference](https://github.com/adafruit/ArduinoCore-samd/blob/master/variants/trinket_m0/variant.cpp)
+  - [Datasheet](https://www.digikey.com/product-detail/en/microchip-technology/ATSAMD21E16B-MFT/ATSAMD21E16B-MFTCT-ND/5455793)
+  - [Arduino variant reference](https://github.com/adafruit/ArduinoCore-samd/blob/master/variants/trinket_m0/variant.cpp)
  
 ### Teensy pin assignments wrt. to Arduino 
 
