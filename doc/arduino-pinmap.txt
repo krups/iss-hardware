@@ -1,11 +1,14 @@
 Arduino Pin     Net
+
+Teensy 3.5
 0               CAPSENSE0
 1               CAPSENSE1
-3               LED1
-4               LED2
-5               LED3
-6               LED4
-7               LED5
+3               LED_IRIDIUM_ON
+4               LED_IRIDIUM_SIGNAL_OK
+5               LED_IRIDIUM_TRANSMITTING
+6               LED_ISM_TRANSMITTING
+7               LED_ACTIVITY
+8		CS_DSP
 9               CS_ISM
 11              MOSI
 12              MISO
@@ -19,11 +22,11 @@ Arduino Pin     Net
 20              CS@TC1
 21              CS@TC2
 A8              BAT_SENSE (A8)
-23              ACT (IRIDIUM ON/OFF)
+23              PRI_ACT (IRIDIUM ON/OFF)
 24              BUZZER
 25              TC1_FAULT (ACTIVE LOW)
 26              TC2_FAULT (ACTIVE LOW)
-27              SEC_CS
+27              SEC_CTRL_2
 28              RESET_ISM
 28              INT_ISM
 30              CAPSENSE3
@@ -35,7 +38,18 @@ A8              BAT_SENSE (A8)
 36              XOUT (A17)
 37              YOUT (A18)
 38              ZOUT (A19) 
-39              SEC_EN          
+39              SEC_CTRL_1        
 A21             IRIDIUM_TX_ACT
 A22             IRIDIUM_STATUS
+
+Safety Processor (ATSAMD21E16B)
+1               CS@TC1
+13              CS@TC2
+7               SEC_ACT
+8               SEC_CTRL_1
+0               SEC_CTRL_2
+PA14            TC1_FAULT
+PA15            TC2_FAULT
+PA17            MUX0
+PA18            MUX1
 

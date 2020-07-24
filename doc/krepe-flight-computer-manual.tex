@@ -3,7 +3,7 @@
 
 \title{KREPE Flight Computer Hardware Manual}
 \author{Matt Ruffner}
-\date{March 2020}
+\date{July 10, 2020}
 
 \usepackage{url}
 \usepackage{float}
@@ -39,11 +39,11 @@ Primary activation is triggered by a pin pull out the KREPE enclosure performed 
 
 The \texttt{POWER\_SW} header must closed for protected battery or USB voltage to be applied to the Teensy's VIN pin, powering on the system. The location of these connection points can be seen in Fig. \ref{fig:board-top} labelled on the silk screen in the left middle of the PCB. A rendering of the bottom of the board is shown in Fig. \ref{fig:board-bottom}.
 
-An end-to-end schematic showing battery protection and device activation is shown in Fig. \ref{fig:activation-circuitry}.
+An end-to-end schematic showing battery protection and device activation is shown in Fig. \ref{fig:activation-circuitry}. 20 AWG non silicone insulated wire of length less than 5 inches is used to connect the batteries to the first power function (battery protection circuitry).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/krepe-electrical-overview.png}
+    \includegraphics[width=0.7\textwidth]{images/krepe-electrical-overview.png}
     \caption{Activation and battery protection schematic overview.}
     \label{fig:activation-circuitry}
 \end{figure}
@@ -171,6 +171,8 @@ We are using the A3LA-RS type modem seen on the NAL Research site (\url{http://w
   
 \subsubsection{Radio Power Control}
 This is the partial activation source for the Iridium radio. Rev. 1.1 the flight computer features a secondary safety processor to continually monitor the thermocouple measurement circuits in parallel with the Teensy. An AND gate controls the power to the solid state relay controlling power to the Iridium radio. THe secondary processor is connected to the other input of this AND gate to make sure that erroneous action on behalf the teensy (or secondary safety processor) is not able to solely activate the radio. 
+
+The following table shows the pin from the Teensy that activates the solid state relay controlling power to the Iridium radio.
 \begin{table}[H]
     \centering
     \begin{tabular}{l|l|c|r}
@@ -225,6 +227,8 @@ Pin connections on headers P1 and P2 show the connections for TC 1-8 lead wire p
 \end{figure}
 
 
+\subsection{Barometric Pressure Sensor Connections}
+Version 1.1 of the flight computer features an Infineon DSP310 barometric pressure and temperature sensor connected to the SPI bus with active low chip select on pin 8 of the teensy.
 
 
 \subsection{Motion Sensor Connections}
@@ -293,11 +297,11 @@ Renderings of the bottom and top of the battery protection PCB can be seen in Fi
     \label{fig:bat-bottom}
 \end{figure}
 
-\section{Testing Software}
+%\section{Testing Software}
 
-ICM-20948 testing software is functional. ADXL377 test software is functional. Lipo charge circuitry is functional. Need to test thermocouple hardware still.
+%ICM-20948 testing software is functional. ADXL377 test software is functional. Lipo charge circuitry is functional. Need to test thermocouple hardware still.
 
-TODO: simple sketch that tests a newly assembled board to make sure the IMU, accel, debug radio, iridium radio and thermocouple amplifiers are working as expected. 
+%TODO: simple sketch that tests a newly assembled board to make sure the IMU, accel, debug radio, iridium radio and thermocouple amplifiers are working as expected. 
 
 
 
@@ -399,7 +403,7 @@ TODO: simple sketch that tests a newly assembled board to make sure the IMU, acc
 
 \section{Partslist}
 \label{app:partslist}
-\lstinputlisting[language={},basicstyle=\tiny]{iss-partslist.txt}
+\lstinputlisting[language={},basicstyle=\tiny]{flight-computer-partslist.txt}
 
 \newpage
 \section{Arduino Pin Mapping}

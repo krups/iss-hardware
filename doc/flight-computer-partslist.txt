@@ -1,6 +1,6 @@
 Partlist
 
-Exported from flight-computer.sch at 7/5/20 4:54 PM
+Exported from flight-computer.sch at 7/23/20 8:11 PM
 
 EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
 
@@ -22,6 +22,8 @@ C8            10uF                 C-USC0603              C0603                 
 C9            0.01uF               C-USC0603              C0603                     adafruit                1
 C10           0.01uF               C-USC0603              C0603                     adafruit                1
 C11           0.01uF               C-USC0603              C0603                     adafruit                1
+C12           0.1uF                C-EUC0603              C0603                     rcl                     4
+C13           0.1uF                C-EUC0603              C0603                     rcl                     4
 C14           0.1uF                C-USC0603              C0603                     adafruit                3
 C15           0.1uF                C-EUC0603              C0603                     rcl                     1
 C16           0.1uF                C-EUC0603              C0603                     rcl                     1
@@ -96,6 +98,7 @@ U7            SN74LVC1T45DRLR      SN74LVC1T45DRLR        DRL6                  
 U8            SN74LVC1T45DRLR      SN74LVC1T45DRLR        DRL6                      gsynth                  1
 U9            DMP3099L             DMP3099L               SOT23                     gsynth                  3
 U10           SN74LVC1G08DCKR      SN74LVC1G08DCKR        SOT65P210X110-5N          SN74LVC1G08DCKR         5
+U11           DPS310XTSA1          DPS310XTSA1            XDCR_DPS310XTSA1          DPS310XTSA1             4
 U12           MAX31856MUD+         MAX31856MUD+           SOP65P640X110-14N         MAX31856                2
 U13           MAX31856MUD+         MAX31856MUD+           SOP65P640X110-14N         MAX31856                2
 VBAT_PTH                           PINHD-1X2              1X02                      pinhead                 3

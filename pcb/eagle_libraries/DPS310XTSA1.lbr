@@ -1,0 +1,146 @@
+<!--This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0-->
+<eagle version="7.1.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<packages>
+<package name="XDCR_DPS310XTSA1">
+<wire x1="1" y1="1.47" x2="-1" y2="1.47" width="0.127" layer="21"/>
+<wire x1="-1" y1="1.25" x2="-1" y2="-1.25" width="0.127" layer="51"/>
+<wire x1="-1" y1="-1.47" x2="1" y2="-1.47" width="0.127" layer="21"/>
+<wire x1="1" y1="-1.25" x2="1" y2="1.25" width="0.127" layer="51"/>
+<wire x1="1.25" y1="1.5" x2="-1.25" y2="1.5" width="0.05" layer="39"/>
+<wire x1="-1.25" y1="1.5" x2="-1.25" y2="-1.5" width="0.05" layer="39"/>
+<wire x1="-1.25" y1="-1.5" x2="1.25" y2="-1.5" width="0.05" layer="39"/>
+<wire x1="1.25" y1="-1.5" x2="1.25" y2="1.5" width="0.05" layer="39"/>
+<circle x="1.52" y="1.1" radius="0.08" width="0.16" layer="21"/>
+<text x="-2" y="1.7" size="0.8128" layer="25">&gt;NAME</text>
+<text x="-2" y="-1.7" size="0.8128" layer="27" align="top-left">&gt;VALUE</text>
+<wire x1="1" y1="-1.25" x2="-1" y2="-1.25" width="0.127" layer="51"/>
+<wire x1="-1" y1="1.25" x2="1" y2="1.25" width="0.127" layer="51"/>
+<circle x="1.52" y="1.1" radius="0.08" width="0.16" layer="51"/>
+<circle x="-0.725" y="0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="-0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="-0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="-0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="-0.975" radius="0.0875" width="0.175" layer="31"/>
+<smd name="1" x="0.725" y="0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="2" x="0.725" y="0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="3" x="0.725" y="-0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="4" x="0.725" y="-0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="5" x="-0.725" y="-0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="6" x="-0.725" y="-0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="7" x="-0.725" y="0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="8" x="-0.725" y="0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+</package>
+</packages>
+<symbols>
+<symbol name="DPS310XTSA1">
+<wire x1="-10.16" y1="12.7" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-12.7" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="12.7" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
+<text x="-10.16" y="13.97" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-13.97" size="1.778" layer="96" align="top-left">&gt;VALUE</text>
+<pin name="GND" x="15.24" y="-10.16" length="middle" direction="pwr" rot="R180"/>
+<pin name="!CSB" x="-15.24" y="2.54" length="middle" direction="in"/>
+<pin name="SDI" x="-15.24" y="-2.54" length="middle"/>
+<pin name="SCK" x="-15.24" y="0" length="middle" direction="in" function="clk"/>
+<pin name="SDO" x="-15.24" y="-5.08" length="middle" direction="out"/>
+<pin name="VDDIO" x="15.24" y="7.62" length="middle" direction="pwr" rot="R180"/>
+<pin name="VDD" x="15.24" y="10.16" length="middle" direction="pwr" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DPS310XTSA1" prefix="U">
+<description>Pressure Sensor 0.3kPa to 1.2kPa Absolute 8-Pin LGA </description>
+<gates>
+<gate name="G$1" symbol="DPS310XTSA1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="XDCR_DPS310XTSA1">
+<connects>
+<connect gate="G$1" pin="!CSB" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1 7"/>
+<connect gate="G$1" pin="SCK" pad="4"/>
+<connect gate="G$1" pin="SDI" pad="3"/>
+<connect gate="G$1" pin="SDO" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="8"/>
+<connect gate="G$1" pin="VDDIO" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="Mouser-Purchase-URL" value="https://snapeda.com/shop?store=Mouser&amp;id=581719"/>
+<attribute name="Package" value="LGA-8 Infineon"/>
+<attribute name="DigiKey-Purchase-URL" value="https://snapeda.com/shop?store=DigiKey&amp;id=581719"/>
+<attribute name="MF" value="Infineon"/>
+<attribute name="Digi-Key_Part_Number" value="DPS310XTSA1CT-ND"/>
+<attribute name="MP" value="DPS310XTSA1"/>
+<attribute name="Description" value="
+Supply voltage range 1.7V to 3.6V | Operation range 300hPa 1200hPa | Sensors precision 0.005hPa | Relative accuracy 0.06hPa | Pressure temperature sensitivity of 0.5Pa/K | Temperature accuracy 0.5C
+"/>
+<attribute name="Arrow_Electronics-Purchase-URL" value="https://snapeda.com/shop?store=Arrow+Electronics&amp;id=581719"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>

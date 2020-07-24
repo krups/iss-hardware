@@ -22948,6 +22948,92 @@ LETTER landscape</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="DPS310XTSA1">
+<packages>
+<package name="XDCR_DPS310XTSA1">
+<wire x1="1" y1="1.47" x2="-1" y2="1.47" width="0.127" layer="21"/>
+<wire x1="-1" y1="1.25" x2="-1" y2="-1.25" width="0.127" layer="51"/>
+<wire x1="-1" y1="-1.47" x2="1" y2="-1.47" width="0.127" layer="21"/>
+<wire x1="1" y1="-1.25" x2="1" y2="1.25" width="0.127" layer="51"/>
+<wire x1="1.25" y1="1.5" x2="-1.25" y2="1.5" width="0.05" layer="39"/>
+<wire x1="-1.25" y1="1.5" x2="-1.25" y2="-1.5" width="0.05" layer="39"/>
+<wire x1="-1.25" y1="-1.5" x2="1.25" y2="-1.5" width="0.05" layer="39"/>
+<wire x1="1.25" y1="-1.5" x2="1.25" y2="1.5" width="0.05" layer="39"/>
+<circle x="1.52" y="1.1" radius="0.08" width="0.16" layer="21"/>
+<text x="-2" y="1.7" size="0.8128" layer="25">&gt;NAME</text>
+<text x="-2" y="-1.7" size="0.8128" layer="27" align="top-left">&gt;VALUE</text>
+<wire x1="1" y1="-1.25" x2="-1" y2="-1.25" width="0.127" layer="51"/>
+<wire x1="-1" y1="1.25" x2="1" y2="1.25" width="0.127" layer="51"/>
+<circle x="1.52" y="1.1" radius="0.08" width="0.16" layer="51"/>
+<circle x="-0.725" y="0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="-0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="-0.725" y="-0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="0.975" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="-0.325" radius="0.0875" width="0.175" layer="31"/>
+<circle x="0.725" y="-0.975" radius="0.0875" width="0.175" layer="31"/>
+<smd name="1" x="0.725" y="0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="2" x="0.725" y="0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="3" x="0.725" y="-0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="4" x="0.725" y="-0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="5" x="-0.725" y="-0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="6" x="-0.725" y="-0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="7" x="-0.725" y="0.325" dx="0.35" dy="0.35" layer="1" cream="no"/>
+<smd name="8" x="-0.725" y="0.975" dx="0.35" dy="0.35" layer="1" cream="no"/>
+</package>
+</packages>
+<symbols>
+<symbol name="DPS310XTSA1">
+<wire x1="-10.16" y1="12.7" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-12.7" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="12.7" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
+<text x="-10.16" y="13.97" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-13.97" size="1.778" layer="96" align="top-left">&gt;VALUE</text>
+<pin name="GND" x="15.24" y="-10.16" length="middle" direction="pwr" rot="R180"/>
+<pin name="!CSB" x="-15.24" y="2.54" length="middle" direction="in"/>
+<pin name="SDI" x="-15.24" y="-2.54" length="middle"/>
+<pin name="SCK" x="-15.24" y="0" length="middle" direction="in" function="clk"/>
+<pin name="SDO" x="-15.24" y="-5.08" length="middle" direction="out"/>
+<pin name="VDDIO" x="15.24" y="7.62" length="middle" direction="pwr" rot="R180"/>
+<pin name="VDD" x="15.24" y="10.16" length="middle" direction="pwr" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DPS310XTSA1" prefix="U">
+<description>Pressure Sensor 0.3kPa to 1.2kPa Absolute 8-Pin LGA </description>
+<gates>
+<gate name="G$1" symbol="DPS310XTSA1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="XDCR_DPS310XTSA1">
+<connects>
+<connect gate="G$1" pin="!CSB" pad="2"/>
+<connect gate="G$1" pin="GND" pad="1 7"/>
+<connect gate="G$1" pin="SCK" pad="4"/>
+<connect gate="G$1" pin="SDI" pad="3"/>
+<connect gate="G$1" pin="SDO" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="8"/>
+<connect gate="G$1" pin="VDDIO" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_ELECTRONICS-PURCHASE-URL" value="https://snapeda.com/shop?store=Arrow+Electronics&amp;id=581719"/>
+<attribute name="DESCRIPTION" value=" Supply voltage range 1.7V to 3.6V | Operation range 300hPa 1200hPa | Sensors precision 0.005hPa | Relative accuracy 0.06hPa | Pressure temperature sensitivity of 0.5Pa/K | Temperature accuracy 0.5C "/>
+<attribute name="DIGI-KEY_PART_NUMBER" value="DPS310XTSA1CT-ND"/>
+<attribute name="DIGIKEY-PURCHASE-URL" value="https://snapeda.com/shop?store=DigiKey&amp;id=581719"/>
+<attribute name="MF" value="Infineon"/>
+<attribute name="MOUSER-PURCHASE-URL" value="https://snapeda.com/shop?store=Mouser&amp;id=581719"/>
+<attribute name="MP" value="DPS310XTSA1"/>
+<attribute name="PACKAGE" value="LGA-8 Infineon"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -23096,6 +23182,9 @@ LETTER landscape</description>
 <part name="R17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="JP3" library="pinhead" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="R19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="100"/>
+<part name="U11" library="DPS310XTSA1" deviceset="DPS310XTSA1" device=""/>
+<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0.1uF"/>
+<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0.1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -23875,14 +23964,14 @@ LETTER landscape</description>
 <label x="63.5" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SEC_CS" class="0">
+<net name="SEC_CTRL_2" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="27"/>
 <wire x1="22.86" y1="25.4" x2="17.78" y2="25.4" width="0.1524" layer="91"/>
 <label x="10.16" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SEC_EN" class="0">
+<net name="SEC_CTRL_1" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="39/A20"/>
 <wire x1="63.5" y1="27.94" x2="71.12" y2="27.94" width="0.1524" layer="91"/>
@@ -23894,6 +23983,13 @@ LETTER landscape</description>
 <pinref part="U$1" gate="G$1" pin="24"/>
 <wire x1="22.86" y1="33.02" x2="17.78" y2="33.02" width="0.1524" layer="91"/>
 <label x="10.16" y="33.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CS_DSP" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="8"/>
+<wire x1="22.86" y1="48.26" x2="15.24" y2="48.26" width="0.1524" layer="91"/>
+<label x="15.24" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -25094,7 +25190,7 @@ Thermocouple Connectors</text>
 <wire x1="147.32" y1="96.52" x2="147.32" y2="175.26" width="0.254" layer="94" style="longdash"/>
 <wire x1="147.32" y1="175.26" x2="147.32" y2="185.42" width="0.254" layer="94" style="longdash"/>
 <wire x1="147.32" y1="175.26" x2="248.92" y2="175.26" width="0.254" layer="94" style="longdash"/>
-<text x="180.34" y="177.8" size="5.08" layer="94">ISM Radio</text>
+<text x="180.34" y="119.38" size="5.08" layer="94">ISM Radio</text>
 <text x="162.56" y="17.78" size="2.54" layer="94">KRUPS Main Board</text>
 <text x="238.76" y="7.62" size="2.54" layer="94">6.0</text>
 <wire x1="147.32" y1="175.26" x2="0" y2="175.26" width="0.254" layer="94" style="longdash"/>
@@ -25103,6 +25199,9 @@ Thermocouple Connectors</text>
 <text x="38.1" y="88.9" size="5.08" layer="94">Capacitive Sense Header</text>
 <wire x1="147.32" y1="45.72" x2="0" y2="45.72" width="0.254" layer="94" style="longdash"/>
 <text x="38.1" y="38.1" size="5.08" layer="94">Buzzer Header</text>
+<wire x1="248.92" y1="127" x2="147.32" y2="127" width="0.254" layer="94" style="longdash"/>
+<wire x1="248.92" y1="114.3" x2="147.32" y2="114.3" width="0.254" layer="94" style="longdash"/>
+<text x="154.94" y="177.8" size="5.08" layer="94">Barometric Pressure Sensor</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes"/>
@@ -25185,6 +25284,18 @@ Thermocouple Connectors</text>
 <attribute name="NAME" x="44.45" y="24.3586" size="1.778" layer="95"/>
 <attribute name="VALUE" x="44.45" y="19.558" size="1.778" layer="96"/>
 </instance>
+<instance part="U11" gate="G$1" x="195.58" y="152.4" smashed="yes">
+<attribute name="NAME" x="185.42" y="166.37" size="1.778" layer="95"/>
+<attribute name="VALUE" x="185.42" y="138.43" size="1.778" layer="96" align="top-left"/>
+</instance>
+<instance part="C12" gate="G$1" x="223.52" y="154.94" smashed="yes">
+<attribute name="NAME" x="225.044" y="155.321" size="1.778" layer="95"/>
+<attribute name="VALUE" x="225.044" y="150.241" size="1.778" layer="96"/>
+</instance>
+<instance part="C13" gate="G$1" x="231.14" y="154.94" smashed="yes">
+<attribute name="NAME" x="232.664" y="155.321" size="1.778" layer="95"/>
+<attribute name="VALUE" x="232.664" y="150.241" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -25257,12 +25368,28 @@ Thermocouple Connectors</text>
 <wire x1="35.56" y1="22.86" x2="35.56" y2="15.24" width="0.1524" layer="91"/>
 <label x="35.56" y="15.24" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$1" pin="GND"/>
+<label x="215.9" y="142.24" size="1.778" layer="95"/>
+<pinref part="C13" gate="G$1" pin="2"/>
+<wire x1="231.14" y1="149.86" x2="231.14" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="142.24" x2="223.52" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="C12" gate="G$1" pin="2"/>
+<wire x1="223.52" y1="142.24" x2="210.82" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="149.86" x2="223.52" y2="142.24" width="0.1524" layer="91"/>
+<junction x="223.52" y="142.24"/>
+</segment>
 </net>
 <net name="MISO" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="MISO"/>
 <wire x1="190.5" y1="88.9" x2="185.42" y2="88.9" width="0.1524" layer="91"/>
 <label x="182.88" y="88.9" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$1" pin="SDO"/>
+<wire x1="180.34" y1="147.32" x2="175.26" y2="147.32" width="0.1524" layer="91"/>
+<label x="172.72" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -25271,12 +25398,22 @@ Thermocouple Connectors</text>
 <wire x1="190.5" y1="91.44" x2="185.42" y2="91.44" width="0.1524" layer="91"/>
 <label x="182.88" y="91.44" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$1" pin="SDI"/>
+<wire x1="180.34" y1="149.86" x2="175.26" y2="149.86" width="0.1524" layer="91"/>
+<label x="172.72" y="149.86" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SCLK" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="SCK"/>
 <wire x1="190.5" y1="93.98" x2="185.42" y2="93.98" width="0.1524" layer="91"/>
 <label x="182.88" y="93.98" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$1" pin="SCK"/>
+<wire x1="180.34" y1="152.4" x2="175.26" y2="152.4" width="0.1524" layer="91"/>
+<label x="172.72" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -25428,6 +25565,29 @@ Thermocouple Connectors</text>
 <pinref part="JP3" gate="G$1" pin="1"/>
 <wire x1="63.5" y1="25.4" x2="35.56" y2="25.4" width="0.1524" layer="91"/>
 <label x="35.56" y="25.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="3V3" class="0">
+<segment>
+<pinref part="U11" gate="G$1" pin="VDD"/>
+<label x="215.9" y="162.56" size="1.778" layer="95"/>
+<wire x1="210.82" y1="162.56" x2="231.14" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<wire x1="231.14" y1="162.56" x2="231.14" y2="157.48" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$1" pin="VDDIO"/>
+<label x="215.9" y="160.02" size="1.778" layer="95"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<wire x1="223.52" y1="157.48" x2="223.52" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="160.02" x2="210.82" y2="160.02" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="CS_DSP" class="0">
+<segment>
+<pinref part="U11" gate="G$1" pin="!CSB"/>
+<wire x1="180.34" y1="154.94" x2="175.26" y2="154.94" width="0.1524" layer="91"/>
+<label x="172.72" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -25592,14 +25752,6 @@ https://github.com/adafruit/Adafruit-Trinket-M0-PCB</text>
 <label x="27.94" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SEC_EN" class="0">
-<segment>
-<pinref part="IC2" gate="G$1" pin="PA01/EINT1/SERCOM1.1"/>
-<label x="124.46" y="127" size="1.778" layer="95"/>
-<pinref part="R17" gate="G$1" pin="1"/>
-<wire x1="114.3" y1="127" x2="142.24" y2="127" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="CS@TC1" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="PA02/EINT2/AIN0/Y0/VOUT"/>
@@ -25619,13 +25771,6 @@ https://github.com/adafruit/Adafruit-Trinket-M0-PCB</text>
 <pinref part="IC2" gate="G$1" pin="PA07/I7/AIN7/SERCOM0.3/I2SD0"/>
 <wire x1="114.3" y1="111.76" x2="124.46" y2="111.76" width="0.1524" layer="91"/>
 <label x="124.46" y="111.76" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SEC_CS" class="0">
-<segment>
-<pinref part="IC2" gate="G$1" pin="PA08/I2C/AIN16/SERCOM0+2.0/I2SD1"/>
-<wire x1="114.3" y1="106.68" x2="124.46" y2="106.68" width="0.1524" layer="91"/>
-<label x="124.46" y="106.68" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -25721,6 +25866,35 @@ https://github.com/adafruit/Adafruit-Trinket-M0-PCB</text>
 <pinref part="IC2" gate="G$1" pin="PA15/I15/SERCOM3+4.3"/>
 <wire x1="114.3" y1="86.36" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
 <label x="121.92" y="86.36" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="MUX0" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PA17/I2C/I1/SERCOM1+3.1"/>
+<wire x1="114.3" y1="81.28" x2="121.92" y2="81.28" width="0.1524" layer="91"/>
+<label x="121.92" y="81.28" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="MUX1" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PA18/I2/SERCOM1+3.2"/>
+<wire x1="114.3" y1="78.74" x2="121.92" y2="78.74" width="0.1524" layer="91"/>
+<label x="121.92" y="78.74" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SEC_CTRL_1" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PA01/EINT1/SERCOM1.1"/>
+<label x="124.46" y="127" size="1.778" layer="95"/>
+<pinref part="R17" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="127" x2="142.24" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SEC_CTRL_2" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="PA08/I2C/AIN16/SERCOM0+2.0/I2SD1"/>
+<wire x1="114.3" y1="106.68" x2="124.46" y2="106.68" width="0.1524" layer="91"/>
+<label x="124.46" y="106.68" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
