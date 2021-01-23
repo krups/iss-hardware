@@ -23208,8 +23208,10 @@ LETTER landscape</description>
 <wire x1="91.44" y1="45.72" x2="147.32" y2="45.72" width="0.254" layer="94" style="longdash"/>
 <wire x1="147.32" y1="45.72" x2="147.32" y2="35.56" width="0.254" layer="94" style="longdash"/>
 <text x="96.52" y="38.1" size="5.08" layer="94">Mounting Holes</text>
-<text x="162.56" y="17.78" size="2.54" layer="94">KRUPS Main Board</text>
-<text x="238.76" y="7.62" size="2.54" layer="94">6.0</text>
+<text x="162.56" y="17.78" size="2.54" layer="94">KREPE Flight Computer</text>
+<text x="238.76" y="7.62" size="2.54" layer="94">6.1</text>
+<text x="162.56" y="7.62" size="2.54" layer="94">KFC-6.1</text>
+<text x="162.56" y="1.524" size="2.54" layer="94">12/15/2020</text>
 </plain>
 <instances>
 <instance part="U4" gate="G$1" x="38.1" y="144.78" smashed="yes">
@@ -24012,8 +24014,10 @@ Thermocouple Connectors</text>
 <wire x1="147.32" y1="91.44" x2="147.32" y2="104.14" width="0.254" layer="94" style="longdash"/>
 <wire x1="147.32" y1="104.14" x2="0" y2="104.14" width="0.254" layer="94" style="longdash"/>
 <wire x1="248.92" y1="96.52" x2="248.92" y2="83.82" width="0.254" layer="94" style="longdash"/>
-<text x="162.56" y="17.78" size="2.54" layer="94">KRUPS Main Board</text>
-<text x="238.76" y="7.62" size="2.54" layer="94">6.0</text>
+<text x="238.76" y="7.62" size="2.54" layer="94">6.1</text>
+<text x="162.56" y="7.62" size="2.54" layer="94">KFC-6.1</text>
+<text x="162.814" y="1.27" size="2.54" layer="94">12/15/2020</text>
+<text x="162.56" y="17.78" size="2.54" layer="94">KREPE Flight Computer</text>
 </plain>
 <instances>
 <instance part="U$24" gate="G$1" x="35.56" y="43.18" smashed="yes">
@@ -24059,7 +24063,6 @@ Thermocouple Connectors</text>
 </instance>
 <instance part="FRAME2" gate="G$1" x="0" y="0" smashed="yes"/>
 <instance part="FRAME2" gate="G$2" x="147.32" y="0" smashed="yes">
-<attribute name="LAST_DATE_TIME" x="160.02" y="1.27" size="2.54" layer="94"/>
 <attribute name="SHEET" x="233.68" y="1.27" size="2.54" layer="94"/>
 </instance>
 <instance part="C24" gate="G$1" x="71.12" y="149.86" smashed="yes">
@@ -24714,11 +24717,13 @@ Thermocouple Connectors</text>
 <wire x1="147.32" y1="172.72" x2="248.92" y2="172.72" width="0.254" layer="94" style="longdash"/>
 <text x="13.97" y="176.784" size="5.08" layer="94">Charge Control</text>
 <text x="87.63" y="176.276" size="5.08" layer="94">Power Headers</text>
-<text x="30.48" y="78.74" size="5.08" layer="94">LiPo Charging + Monitoring</text>
+<text x="30.48" y="78.74" size="5.08" layer="94">LiIon Charging + Monitoring</text>
 <wire x1="248.92" y1="124.46" x2="248.92" y2="114.3" width="0.254" layer="94" style="longdash"/>
 <text x="172.72" y="175.26" size="5.08" layer="94">1.8V Regulator</text>
-<text x="162.56" y="17.78" size="2.54" layer="94">KRUPS Main Board</text>
-<text x="238.76" y="7.62" size="2.54" layer="94">6.0</text>
+<text x="238.76" y="7.62" size="2.54" layer="94">6.1</text>
+<text x="162.56" y="7.62" size="2.54" layer="94">KFC-6.1</text>
+<text x="162.814" y="1.27" size="2.54" layer="94">12/15/20</text>
+<text x="162.56" y="17.78" size="2.54" layer="94">KREPE Flight Computer</text>
 </plain>
 <instances>
 <instance part="X3" gate="G$1" x="241.3" y="58.42" smashed="yes">
@@ -24832,7 +24837,6 @@ Thermocouple Connectors</text>
 </instance>
 <instance part="FRAME3" gate="G$1" x="0" y="0" smashed="yes"/>
 <instance part="FRAME3" gate="G$2" x="147.32" y="0" smashed="yes">
-<attribute name="LAST_DATE_TIME" x="160.02" y="1.27" size="2.54" layer="94"/>
 <attribute name="SHEET" x="233.68" y="1.27" size="2.54" layer="94"/>
 </instance>
 <instance part="C14" gate="G$1" x="193.04" y="53.34" smashed="yes">
@@ -25191,8 +25195,7 @@ Thermocouple Connectors</text>
 <wire x1="147.32" y1="175.26" x2="147.32" y2="185.42" width="0.254" layer="94" style="longdash"/>
 <wire x1="147.32" y1="175.26" x2="248.92" y2="175.26" width="0.254" layer="94" style="longdash"/>
 <text x="180.34" y="119.38" size="5.08" layer="94">ISM Radio</text>
-<text x="162.56" y="17.78" size="2.54" layer="94">KRUPS Main Board</text>
-<text x="238.76" y="7.62" size="2.54" layer="94">6.0</text>
+<text x="238.76" y="7.62" size="2.54" layer="94">6.1</text>
 <wire x1="147.32" y1="175.26" x2="0" y2="175.26" width="0.254" layer="94" style="longdash"/>
 <text x="35.56" y="177.8" size="5.08" layer="94">Status LEDs</text>
 <wire x1="147.32" y1="96.52" x2="0" y2="96.52" width="0.254" layer="94" style="longdash"/>
@@ -25202,6 +25205,8 @@ Thermocouple Connectors</text>
 <wire x1="248.92" y1="127" x2="147.32" y2="127" width="0.254" layer="94" style="longdash"/>
 <wire x1="248.92" y1="114.3" x2="147.32" y2="114.3" width="0.254" layer="94" style="longdash"/>
 <text x="154.94" y="177.8" size="5.08" layer="94">Barometric Pressure Sensor</text>
+<text x="162.56" y="7.62" size="2.54" layer="94">KFC-6.1</text>
+<text x="162.56" y="17.78" size="2.54" layer="94">KREPE Flight Computer</text>
 </plain>
 <instances>
 <instance part="FRAME4" gate="G$1" x="0" y="0" smashed="yes"/>
@@ -25599,6 +25604,10 @@ Thermocouple Connectors</text>
 <text x="119.38" y="137.16" size="2.032" layer="94">https://cdn-learn.adafruit.com/assets/assets/000/049/778/original/adafruit_products_Adafruit_Trinket_M0.png?1514756138
 
 https://github.com/adafruit/Adafruit-Trinket-M0-PCB</text>
+<text x="190.5" y="7.62" size="2.54" layer="94">KFC-6.1</text>
+<text x="190.5" y="17.78" size="2.54" layer="94">KREPE Flight Computer</text>
+<text x="190.246" y="1.778" size="2.54" layer="94">12/15/20</text>
+<text x="264.16" y="7.62" size="2.54" layer="94">6.1</text>
 </plain>
 <instances>
 <instance part="IC2" gate="G$1" x="78.74" y="88.9" smashed="yes">
@@ -25617,9 +25626,7 @@ https://github.com/adafruit/Adafruit-Trinket-M0-PCB</text>
 </instance>
 <instance part="FRAME5" gate="G$1" x="0" y="0" smashed="yes"/>
 <instance part="FRAME5" gate="G$2" x="172.72" y="0" smashed="yes">
-<attribute name="LAST_DATE_TIME" x="185.42" y="1.27" size="2.54" layer="94"/>
 <attribute name="SHEET" x="259.08" y="1.27" size="2.54" layer="94"/>
-<attribute name="DRAWING_NAME" x="190.5" y="19.05" size="2.54" layer="94"/>
 </instance>
 <instance part="JP1" gate="A" x="152.4" y="45.72" smashed="yes">
 <attribute name="NAME" x="146.05" y="53.975" size="1.778" layer="95"/>
