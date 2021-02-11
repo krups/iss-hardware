@@ -34,15 +34,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-This document contains information about the flight computer for the KREPE mission as well as the safety precautions taken to ensure the flight hardware is not a danger to the ISS or its astronauts. In addition to electrical designs and schematics, this document contains pin names, links to datasheets, and implementation notes. The following sections outline the subsystems of the flight computer, pin names for software usage, and datasheets. The flight computer provides integrated battery charging for easy charging prior to integration. Other details about the power subsystem including battery type and rating are also included. 
+This document contains information about the flight computer for the KREPE mission as well as the safety precautions taken to ensure the flight hardware is not a danger to the ISS or its astronauts. In addition to electrical designs and schematics, this document contains pin names, links to datasheets, and implementation notes. The following sections outline the subsystems of the flight computer, pin names for software usage, and datasheets. Other details about the power subsystem including battery type and rating are also included. 
 
 The entire flight ready assembly is referred to as KREPE, which consists of a capsule containing the science (flight computer, batteries, etc.) and an metal shell known as KREM that acts as a Faraday cage inhibiting any inadvertent RF radiation from the probe. Both primary and secondary activation must occur for the capsule to become fully active and begin RF transmissions. To avoid accidental activation of hazardous subsystems, multiple secondary activation criteria must be met. Primary and secondary activation processes are discussed in sections ~\ref{sec:primary-activation},\ref{sec:secondary-activation}, and \ref{sec:radio-power-control}.
 
-The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsytems}. Pin definitions are listed with each hardware or sensor component along with any relevant information regarding safety or implementation. Electrical schematics, microcontroller reference cards, and a partslist are shown in  Appendices ~\ref{appa}, \ref{app:pinmap}, and \ref{app:partslist}, respectively.
+The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsystems}. Pin definitions are listed with each hardware or sensor component along with any relevant information regarding safety or implementation. Electrical schematics, microcontroller reference cards, and a partslist are shown in  Appendices ~\ref{appa}, \ref{app:pinmap}, and \ref{app:partslist}, respectively.
+
 
 \subsection{Primary Activation}
 \label{sec:primary-activation}
-Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/D2SW-3L1H/Z12268-ND/1811989}} is closed and the flight computer boots to standby mode where it consumes minimal power. The Iridium radio is not powered on in standby mode. The flight computer wakes up periodically to log sensor data and determine if conditions for secondary activation have been met.  A schematic showing battery protection and primary activation circuitry activation is shown in Fig. \ref{fig:activation-circuitry}. Less than 5 inches of copper 20 AWG PVC insulated wire is used to connect the batteries to the first power function (battery protection circuitry).
+Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/D2SW-3L1H/Z12268-ND/1811989}} is closed and the flight computer boots to dormant mode where it consumes minimal power. The Iridium radio is not powered on in dormant mode. After pulling the pull tab, a piece of copper tape is put over the hole and primary activation is the complete. Copper tape ensures the KREM is completely sealed with regard to EMI. 
+
+A schematic showing battery protection and primary activation circuitry activation is shown in Fig. \ref{fig:activation-circuitry}. Less than 5 inches of copper 20 AWG PVC insulated wire is used to connect the batteries to the first power function (battery protection circuitry).
 
 
 %The \texttt{POWER\_SW} header must closed for protected battery or USB voltage to be applied to the Teensy's VIN pin, powering on the system. The location of these connection points can be seen in Fig. \ref{fig:board-top} labelled on the silk screen in the left middle of the PCB. A rendering of the bottom of the board is shown in Fig. \ref{fig:board-bottom}.
@@ -64,11 +67,11 @@ Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once
 
 \subsection{Secondary Activation}
 \label{sec:secondary-activation}
-Once primary activation is complete and the flight computer is in standby mode, sensors are polled to check for conditions necessary for secondary activation. Secondary activation is only engaged once the KREM has separated from the probe. No radio transmissions are attempted before secondary activation. 
+Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. When this interrupt is triggered, the flight computer checks the status of the thermocouples. If the thermocouples register a temperature that is sufficient to have melted the polycarbonate bolts that hold the KREM together, secondary activation occurs. If the temperature is not sufficient, the flight computer re-enters dormant mode. No radio transmissions are attempted before secondary activation. 
 
-Thermocouples and the capacitive sensing subsystem are polled to check for conditions sufficient for secondary activation. As KREPE re-enters the atmosphere, heating of the metal KREM will melt the plastic bolts that hold it together. This ambient temperature increase of the probe is sensed by the thermal measurement subsystem and is one criteria for secondary activation. The presence of KREM around the probe is detected by capacitive sensors, this is the secondary criteria for secondary activation. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
+%Thermocouples and the KREM interrupt sensing subsystem are polled to check for conditions sufficient for secondary activation. As KREPE re-enters the atmosphere, heating of the metal KREM will melt the plastic bolts that hold it together. This ambient temperature increase of the probe is sensed by the thermal measurement subsystem and is one criteria for secondary activation. The presence of KREM around the probe is detected by capacitive sensors, this is the secondary criteria for secondary activation. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
 
-An activation redundancy processor (ARP) was added in Rev. 1.1 of the flight computer, if the flight computer needs to be tested without the ARP, there is a solder jumper on the bottom of the PCB (SJ1) that, when shorted together, bypasses the AND gate that controls Iridium radio activation, reducing the system to single activation.
+%An activation redundancy processor (ARP) was added in Rev. 1.1 of the flight computer, if the flight computer needs to be tested without the ARP, there is a solder jumper on the bottom of the PCB (SJ1) that, when shorted together, bypasses the AND gate that controls Iridium radio activation, reducing the system to single activation.
 
 
 
@@ -83,6 +86,8 @@ An activation redundancy processor (ARP) was added in Rev. 1.1 of the flight com
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Subsystems}
 \label{sec:subsystems}
+
+\iffalse
 \subsection{Activation Redundancy Processor}
 \label{actred}
 Revision 1.1 of the KREPE flight computer adds a secondary safety processor as a schedule risk mitigation step should the KREM fail to provide the expected function as a Faraday cage and EMI testing shows unacceptable exceedances of EMI emissions. If the KREM functions as expected as a faraday cage, the safety processor hardware will be physically disabled and the ARP hardware will not be functional for flight. 
@@ -155,18 +160,15 @@ In order to have access to all GPIO used on the ARP, the Adafruit Trinket M0 def
 %    \caption{Pins used with SPI, I$^2$C, and UART interfaces.}
 %    \label{tab:pins_serial}
 %\end{table}
-
+\fi
 \subsection{Radio Communications}
 
 KREPE has two radios, a debug radio used for ground work and an Iridium satellite modem used both on the ground and during the mission. The following subsections explain the conditions necessary for enabling the satellite modem during the mission and also restate that the debug radio is physically disabled prior to final integration and is never powered on or used during the actual mission.
 
 \subsubsection{Radio Power Control}
 \label{sec:radio-power-control}
-Say that before this stuff happens we need to physically activate.
-
-different revs for after environmental testing
-
-An AND gate controls the power to the solid state relay controlling power to the Iridium radio. The secondary processor is connected to the other input of this AND gate to make sure that erroneous action on behalf the Teensy (or secondary safety processor) is not able to solely activate the radio. In addition to the thermocouple measurements, another inhibit to powering on the Iridium radio is the detection of KREM separation, performed by capacitive sensing. Table \ref{tab:radio-inhibits} summarizes the inhibits to radio activation.
+There are two inhibits to powering on the iridium, as denoted in Table~\ref{tab:radio-inhibits}. The separation of the KREM must be detected and the temperature of the capsule must be determined to be above the activation threshold temperature, $T_a$.
+%Two indeAn AND gate controls the power to the solid state relay controlling power to the Iridium radio. The secondary processor is connected to the other input of this AND gate to make sure that erroneous action on behalf the Teensy (or secondary safety processor) is not able to solely activate the radio. In addition to the thermocouple measurements, another inhibit to powering on the Iridium radio is the detection of KREM separation, performed by capacitive sensing. Table \ref{tab:radio-inhibits} summarizes the inhibits to radio activation.
 
 
 \begin{table}[H]
@@ -178,8 +180,8 @@ An AND gate controls the power to the solid state relay controlling power to the
 		\hline
 		
 		Thermocouples & Teensy  & Thermocouple temperature reported by Teensy\\
-		Thermocouples & ARP		& Thermocouple temperature reported by secondary ARP \\
-		Capacitance	  & Teensy  & KREM presence detected by Teensy
+		%Thermocouples & ARP		& Thermocouple temperature reported by secondary ARP \\
+		KREM Interrupt	 & Teensy  & KREM presence detected by Teensy
 	\end{tabular}
 	
 \end{table}
@@ -198,7 +200,7 @@ An AND gate controls the power to the solid state relay controlling power to the
 
 
 \subsubsection{Iriduim Radio}
-We are using the A3LA-RS type modem seen on the NAL Research site (\url{http://www.nalresearch.com/IridiumHardware.html}). The RF specifications, taken from the module's datasheet are shown in Fig. \ref{fig:iridium-rf-specs}.
+We are using the A3LA-RS type modem seen on the NAL Research site~\footnote{ \url{http://www.nalresearch.com/IridiumHardware.html}}. The RF specifications, taken from the module's datasheet are shown in Fig. \ref{fig:iridium-rf-specs}.
 
 \begin{figure}[H]
     \centering
@@ -209,7 +211,7 @@ We are using the A3LA-RS type modem seen on the NAL Research site (\url{http://w
 
 \paragraph{Iridium Serial Interface}
 
-A 3.3V TTL to RS232 adapter is needed to interface with the AL3A-RS. This small serial converter board is wired in between the flight computer and Iridium module.
+A 3.3V TTL to RS232 adapter is needed to interface with the AL3A-RS. This small serial converter board is wired in between the flight computer and Iridium module. The serial converter uses a  MAX3232E RS-232 line driver and receiver~\footnote{\url{https://www.ti.com/product/MAX3232E}}.
 
 \begin{figure}[H]
 	\centering
@@ -221,7 +223,7 @@ A 3.3V TTL to RS232 adapter is needed to interface with the AL3A-RS. This small 
 
 
 \subsubsection{Debug Radio}
-The KREPE flight computer features a secondary debug radio used for ground testing that is not enabled for the real mission.  Maximum output power according to the radio datasheet (\url{https://cdn.sparkfun.com/datasheets/Wireless/General/RFM69HCW-V1.1.pdf}) is 100mW.
+The KREPE flight computer features a secondary debug radio used for ground testing that is not enabled for the real mission.  Maximum output power according to the radio datasheet \footnote{\url{https://cdn.sparkfun.com/datasheets/Wireless/General/RFM69HCW-V1.1.pdf}} is 100mW.
 \begin{table}[H]
 	\centering
 	\caption{Radio module interface signals.}
@@ -327,7 +329,14 @@ The KREPE flight computer features several auxillary sensors that will be used t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 \subsection{Power and Batteries}
-Batteries are provided by JSC and are Sanyo XXX rated at 3200mAh. System power is provided by two of these cells tabbed in parallel (tabbing performed and documented by JSC).
+Batteries are provided by JSC and rated at 3200mAh. System power is provided by two of these cells tabbed in parallel (tabbing performed and documented by JSC). Battery classification, product, and model number can be seen in Fig. \ref{fig:bat-spec} (taken from battery specification sheet).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=12cm]{images/battery-spec.png}
+	\label{fig:bat-spec}
+	\caption{Sanyo battery specifications from the datasheet.}
+\end{figure}
 
 Charge current is limited to to 450 milliamps (mA), a charge rate of $C/12$ with the two (2) 3200 milliamp-hour (mAh) system  Battery Charge power can be delivered via Teensy USB or the \texttt{CHARGE} header. Charging input voltage is expected to be 5 volts. Charge voltage to the batteries is regulated to 4.2 volts by the charge management IC, an MCP73831\footnote{ (\url{https://www.microchip.com/wwwproducts/en/MCP73831})}, with status connections to the Teensy as shown in Table \ref{tab:pins-battery}. 
 
@@ -349,9 +358,8 @@ Charging is only performed on the ground and there is no provision for charging 
 \end{table}
 
 \subsubsection{Battery Protection}
-Protection circuitry is implemented on the flight board to support 2P1S LiIon packs for system power. We are using a DW108 Voltage and Current Protection IC (\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}).
+Protection circuitry is implemented on the flight board to support 2P1S LiIon packs for system power. We are using a DW108 Voltage and Current Protection IC \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
 
-The battery protection circuitry is pre assembled and not shown in the appendix a.
 
 \begin{figure}[H]
 	\centering
@@ -383,33 +391,6 @@ The battery protection PCB can be seen preventing over current draw in Fig. \ref
 	\caption{The battery protection circuity disconnecting the cells after 6ms of over current condition. Blue: current. Purple: pack voltage.}
 	\label{fig:over-current}
 \end{figure}
-
-%\section{Testing Software}
-
-%ICM-20948 testing software is functional. ADXL377 test software is functional. Lipo charge circuitry is functional. Need to test thermocouple hardware still.
-
-%TODO: simple sketch that tests a newly assembled board to make sure the IMU, accel, debug radio, iridium radio and thermocouple amplifiers are working as expected. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -453,12 +434,13 @@ The battery protection PCB can be seen preventing over current draw in Fig. \ref
     \label{fig:page1-4}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/page5.png}
-    \caption{Page five of schematics.}
-    \label{fig:page1-5}
-\end{figure}
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=\textwidth]{images/page5.png}
+%    \caption{Page five of schematics.}
+%    \label{fig:page1-5}
+%\end{figure}
 
 \section{Board Renderings}
 \begin{figure}[H]
@@ -510,6 +492,7 @@ The battery protection PCB can be seen preventing over current draw in Fig. \ref
 
 
 %% CBCS compliance
+\iffalse
 \newpage
 \section{General Requirements Compliance}
 Upon both power up (after primary activation via pull-tab) and detection of a termination or off-nominal power condition, the Teensy processor will enter a safe reset state, where all GPIO pins controlling critical system functions are set to a high impedance value. This high impedance state, in addition to the flight computer PCB, ensure requirements in the \textit{General Requirements for the Computer-Based Control System Safety Requirements for the ISS} are met. Overcurrent and undervoltage protection for battery cells is implemented upstream of the flight computer, limiting the off-nominal power conditions expected (see KREPE Flight Computer Hardware Manual). See Fig. \ref{fig:exec-lifecycle} for an overview of the main execution lifecycle and how upon both power up and detection of an abnormal power condition both put the CBCS back into the safe high impedance state. CBCS General Requirements are discussed below.
@@ -547,9 +530,10 @@ Suggest putting a transmitter inside and see if we can detect any leakage at MSF
 Upon detection of an anomaly internal to the CBCS there is watchdog timer functionality that will return the CBCS to the known safe initialization state. Verification procedures for this requirement entail physical disruption/disconnection of flight computer hardware to ensure control software can recover.
 
 \subsection{3.1.1.8}
-The external sources in this case would be the ambient temperature of capsule and the presence of the metal enclosure around the KREPE capsule. The capsule uses the Fault flags on the thermocouple to digital converter are used to discern if a valid thermocouple reading has been collected or not. There are also multiple thermocouples whos values are cross checked for consistency in valid readings. Capacitive sensing is also used to detect the presence of the metal enclosure around the KREPE capsule. Both of these inputs are used to discern between valid and invalid input.
+The external sources in this case would be the ambient temperature of capsule and the presence of the metal enclosure around the KREPE capsule. The capsule uses the Fault flags on the thermocouple to digital converter are used to discern if a valid thermocouple reading has been collected or not. There are also multiple thermocouples whos values are cross checked for consistency in valid readings.
+% Capacitive sensing is also used to detect the presence of the metal enclosure around the KREPE capsule. Both of these inputs are used to discern between valid and invalid input.
 
-Verification for this requirement entails physical disconnection/perturbation of thermocouple and capacitive sensing leads to analyze the induced effect on measurement values and fault conditions. 
+%Verification for this requirement entails physical disconnection/perturbation of thermocouple and capacitive sensing leads to analyze the induced effect on measurement values and fault conditions. 
 
 \subsection{3.1.1.9}
 Inspection
@@ -571,7 +555,7 @@ N/A - KREPE has no requirement for audio communication. KREPE has no uplink capa
 
 \subsection{3.1.1.13}
 N/A - KREPE does not receive any commands.
-
+\fi
 
 %\bibliographystyle{plain}
 %\bibliography{references}
