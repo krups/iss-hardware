@@ -3,7 +3,7 @@
 
 \title{KREPE Flight Computer Hardware Manual}
 \author{Matt Ruffner}
-\date{December 16, 2020}
+\date{February 12, 2021}
 
 \usepackage{url}
 \usepackage{float}
@@ -36,7 +36,7 @@
 
 This document contains information about the flight computer for the KREPE mission as well as the safety precautions taken to ensure the flight hardware is not a danger to the ISS or its astronauts. In addition to electrical designs and schematics, this document contains pin names, links to datasheets, and implementation notes. The following sections outline the subsystems of the flight computer, pin names for software usage, and datasheets. Other details about the power subsystem including battery type and rating are also included. 
 
-The entire flight ready assembly is referred to as KREPE, which consists of a capsule containing the science (flight computer, batteries, etc.) and an metal shell known as KREM that acts as a Faraday cage inhibiting any inadvertent RF radiation from the probe. Both primary and secondary activation must occur for the capsule to become fully active and begin RF transmissions. To avoid accidental activation of hazardous subsystems, multiple secondary activation criteria must be met. Primary and secondary activation processes are discussed in sections ~\ref{sec:primary-activation},\ref{sec:secondary-activation}, and \ref{sec:radio-power-control}.
+The entire flight ready assembly is referred to as KREPE, which consists of a capsule containing the science (flight computer, batteries, etc.) and a metal shell known as KREM that acts as a Faraday cage, inhibiting any inadvertent RF radiation from the capsule. Both primary and secondary activation must occur for the capsule to become fully active and begin RF transmissions. To avoid accidental activation of hazardous subsystems, secondary activation criteria must be met. Primary and secondary activation processes are discussed in sections ~\ref{sec:primary-activation},\ref{sec:secondary-activation}, and \ref{sec:radio-power-control}.
 
 The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsystems}. Pin definitions are listed with each hardware or sensor component along with any relevant information regarding safety or implementation. Electrical schematics, microcontroller reference cards, and a partslist are shown in  Appendices ~\ref{appa}, \ref{app:pinmap}, and \ref{app:partslist}, respectively.
 
@@ -67,7 +67,7 @@ A schematic showing battery protection and primary activation circuitry activati
 
 \subsection{Secondary Activation}
 \label{sec:secondary-activation}
-Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. When this interrupt is triggered, the flight computer checks the status of the thermocouples. If the thermocouples register a temperature that is sufficient to have melted the polycarbonate bolts that hold the KREM together, secondary activation occurs. If the temperature is not sufficient, the flight computer re-enters dormant mode. No radio transmissions are attempted before secondary activation. 
+Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. When this interrupt is triggered and the  register a temperature that is sufficient to have melted the polycarbonate bolts that hold the KREM together, secondary activation occurs. If the temperature is not sufficient, the flight computer re-enters dormant mode. No radio transmissions are attempted before secondary activation. 
 
 %Thermocouples and the KREM interrupt sensing subsystem are polled to check for conditions sufficient for secondary activation. As KREPE re-enters the atmosphere, heating of the metal KREM will melt the plastic bolts that hold it together. This ambient temperature increase of the probe is sensed by the thermal measurement subsystem and is one criteria for secondary activation. The presence of KREM around the probe is detected by capacitive sensors, this is the secondary criteria for secondary activation. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
 
@@ -358,7 +358,7 @@ Charging is only performed on the ground and there is no provision for charging 
 \end{table}
 
 \subsubsection{Battery Protection}
-Protection circuitry is implemented on the flight board to support 2P1S LiIon packs for system power. We are using a DW108 Voltage and Current Protection IC \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
+Protection circuitry is implemented on the flight board to support 2P1S LiIon packs for system power. We are using a DW01-P Voltage and Current Protection IC \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
 
 
 \begin{figure}[H]
@@ -382,7 +382,7 @@ Protection circuitry as implemented on the KREPE flight computer PCB is shown in
 
 
 \paragraph{Over-current protection}
-The battery protection PCB can be seen preventing over current draw in Fig. \ref{fig:over-current}. After 6 milliseconds, the battery cells are disconnected from the output and current draw 
+The battery protection PCB can be seen preventing over current draw in Fig. \ref{fig:over-current}. After 6 milliseconds, the battery cells are disconnected from the output and current draw goes zero.
 
 
 \begin{figure}[H]
