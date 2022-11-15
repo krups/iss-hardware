@@ -1,9 +1,8 @@
-# Kentucky RE-entry Probe Experiment
-Board files, schematics, DXF, BOM, partslist and documentation pdf for  KREPE ISS mission hardware. The full flight computer manual can be found here
+# Kentucky RE-entry Probe Experiment 2
+Board files, schematics, DXF, BOM, partslist and documentation for the KREPE-2 mission, part of the KRUPS campaign at the University of Kentucky. Documentation PDF can be found [Flight Computer Hardware Manual](doc/krepe-flight-computer-manual.pdf).
 
-[Flight Computer Hardware Manual](doc/krepe-flight-computer-manual.pdf).
+Documentation for the KREPE-1 mission can be found on the krepe1 branch [here](https://github.com/krups/iss-hardware/blob/krepe1/doc/krepe-flight-computer-manual.pdf).
 
-Often used information is repeated in this document for convenience
 
 ### Board renders
 <p>
