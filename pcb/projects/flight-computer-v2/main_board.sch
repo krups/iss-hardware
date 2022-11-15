@@ -14504,6 +14504,7 @@ Source: http://www.osram.convergy.de/</description>
 <part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3"/>
 <part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3"/>
 <part name="R27" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3"/>
+<part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0.1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -14520,6 +14521,7 @@ Source: http://www.osram.convergy.de/</description>
 <wire x1="248.92" y1="127" x2="248.92" y2="129.54" width="0.254" layer="94"/>
 <wire x1="154.94" y1="101.6" x2="248.92" y2="101.6" width="0.254" layer="94"/>
 <text x="165.1" y="104.14" size="3.81" layer="94">Mounting holes</text>
+<text x="127" y="88.9" size="3.81" layer="94">POL mosfet for J2 and J4</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0" smashed="yes"/>
@@ -14549,9 +14551,9 @@ Source: http://www.osram.convergy.de/</description>
 <attribute name="NAME" x="176.276" y="162.179" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="176.276" y="167.259" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C7" gate="G$1" x="213.36" y="177.8" smashed="yes" rot="R90">
-<attribute name="NAME" x="212.979" y="179.324" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="218.059" y="179.324" size="1.778" layer="96" rot="R90"/>
+<instance part="C7" gate="G$1" x="190.5" y="175.26" smashed="yes" rot="R90">
+<attribute name="NAME" x="190.119" y="176.784" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="195.199" y="176.784" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="C8" gate="G$1" x="177.8" y="152.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="176.276" y="152.019" size="1.778" layer="95" rot="R180"/>
@@ -14629,6 +14631,10 @@ Source: http://www.osram.convergy.de/</description>
 <attribute name="NAME" x="147.32" y="78.74" size="1.27" layer="95"/>
 <attribute name="VALUE" x="157.48" y="78.74" size="1.27" layer="96"/>
 </instance>
+<instance part="C2" gate="G$1" x="223.52" y="177.8" smashed="yes" rot="R90">
+<attribute name="NAME" x="223.139" y="179.324" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="228.219" y="179.324" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -14704,6 +14710,16 @@ Source: http://www.osram.convergy.de/</description>
 <wire x1="134.62" y1="68.58" x2="129.54" y2="68.58" width="0.1524" layer="91"/>
 <junction x="134.62" y="68.58"/>
 <label x="127" y="68.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="C7" gate="G$1" pin="1"/>
+<wire x1="187.96" y1="175.26" x2="182.88" y2="175.26" width="0.1524" layer="91"/>
+<label x="177.8" y="175.26" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="220.98" y1="177.8" x2="218.44" y2="177.8" width="0.1524" layer="91"/>
+<label x="215.9" y="177.8" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RIRI" class="0">
@@ -14794,10 +14810,9 @@ Source: http://www.osram.convergy.de/</description>
 <net name="N$11" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="V+"/>
-<wire x1="200.66" y1="165.1" x2="198.12" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="C7" gate="G$1" pin="1"/>
-<wire x1="198.12" y1="165.1" x2="198.12" y2="177.8" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="177.8" x2="210.82" y2="177.8" width="0.1524" layer="91"/>
+<pinref part="C7" gate="G$1" pin="2"/>
+<wire x1="195.58" y1="175.26" x2="195.58" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="165.1" x2="200.66" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -15018,8 +15033,8 @@ Source: http://www.osram.convergy.de/</description>
 <wire x1="228.6" y1="167.64" x2="233.68" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="SJ8" gate="G$1" pin="2"/>
 <wire x1="233.68" y1="177.8" x2="233.68" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="C7" gate="G$1" pin="2"/>
-<wire x1="233.68" y1="177.8" x2="218.44" y2="177.8" width="0.1524" layer="91"/>
+<pinref part="C2" gate="G$1" pin="2"/>
+<wire x1="228.6" y1="177.8" x2="233.68" y2="177.8" width="0.1524" layer="91"/>
 <junction x="233.68" y="177.8"/>
 </segment>
 </net>
