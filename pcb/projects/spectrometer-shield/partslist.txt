@@ -1,0 +1,19 @@
+Partlist
+
+Exported from spectrometer-shield.brd at 11/17/22 8:34 PM
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value                 Package                        Library      Position (mil)        Orientation
+
+C1                             C1206                          rcl          (835 200)             R180
+C2                             C0603                          rcl          (1000 200)            R0
+J1       S4B-PH-SM4-TB(LF)(SN) CONN_S4B-PH-SM4-TB(LF)(SN)_JST COM-13909    (250 450)             R90
+JP1                            1X16_ROUND                     microbuilder (1000 850)            R0
+JP3                            1X12_ROUND                     microbuilder (800 50)              R180
+R1                             R0603                          rcl          (1500 600)            R0
+R2                             R0603                          rcl          (1500 700)            R180
+U$1      C12880MA              C12880MA_FOOTPRINT             COM-13909    (1300 300)            MR0
+U1       TL081HIDBVR           SOT-23-5_DBV_TEX               COM-13909    (1500 450)            R270

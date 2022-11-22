@@ -1,0 +1,133 @@
+Partlist
+
+Exported from main_board.brd at 11/17/22 8:33 PM
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value              Package                              Library            Position (mil)        Orientation
+
+C1       0.1uF              C0603                                rcl                (4150 2050)           R180
+C2       0.1uF              C0603                                rcl                (1450 2020)           R180
+C6       0.1uF              C0603                                rcl                (1400 2250)           R270
+C7       0.1uF              C0603                                rcl                (1450 2110)           R180
+C8       0.1uF              C0603                                rcl                (1265 2270)           R270
+C9       0.1uF              C0603                                rcl                (1155 2255)           R0
+C10      0.1uF              C0603                                rcl                (4550 1550)           R90
+C11      0.1uF              C0603                                rcl                (4150 450)            R0
+C12      0.1uF              C0603                                rcl                (3600 2050)           R180
+C13      0.1uF              C0603                                rcl                (4550 1000)           R90
+C14      0.1uF              C0603                                rcl                (3835 1200)           R180
+C15      0.1uF              C0603                                rcl                (3550 450)            R0
+C17      0.1uF              C0603                                rcl                (3755 1345)           R90
+C18      0.1uF              C0603                                rcl                (2550 400)            R0
+C19      0.1uF              C0603                                rcl                (4000 1200)           R0
+C20      0.1uF              C0603                                rcl                (3650 1310)           R180
+C22      10µF               0805-NO                              microbuilder       (1850 1950)           R90
+C23      0.1uF              C0603                                rcl                (4280 1665)           R180
+C24      0.1uF              C0603                                rcl                (3400 1800)           R270
+C25      0.1uF              C0603                                rcl                (3940 1875)           R90
+C26      0.1uF              C0603                                rcl                (3765 590)            R270
+C27      0.1uF              C0603                                rcl                (4350 1165)           R0
+C28      0.1uF              C0603                                rcl                (4300 600)            R270
+C29      1uF                0603-NO                              microbuilder       (1750 2000)           R270
+C30      10µF               0805-NO                              microbuilder       (2000 2100)           R0
+H1       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (2950 200)            R0
+H2       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (2950 2350)           R0
+H3       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4800 2350)           R0
+H4       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4800 200)            R0
+H5       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (200 2350)            R0
+H6       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (200 200)             R0
+H7       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4850 800)            R0
+H8       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4850 1100)           R0
+H9       MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4850 1450)           R0
+H10      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4850 1750)           R0
+H11      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (3750 2350)           R0
+H12      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (3450 2350)           R0
+H13      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4400 2350)           R0
+H14      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4100 2350)           R0
+H15      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (3400 150)            R0
+H16      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (3700 150)            R0
+H17      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4100 150)            R0
+H18      MOUNT-PAD-ROUND2.8 2,8-PAD                              holes              (4400 150)            R0
+J1       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (1100 150)            R0
+J2       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (1450 2450)           R0
+J3       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (2050 1100)           R90
+J4       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (900 2450)            R0
+J5       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (290 1810)            R90
+J6       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (650 150)             R0
+J7       104031-0811        MOLEX_104031-0811                    104031-0811        (2050 300)            R180
+J8       B4B-PH-K-S(LF)(SN) JST_B4B-PH-K-S(LF)(SN)               B4B-PH-K-S_LF__SN_ (550 1950)            R270
+J9       U.FL-R-SMT(10)     HRS_U.FL-R-SMT(10)                   U.FL-R-SMT_10_     (2500 2400)           R90
+JP1                         1X16_ROUND                           microbuilder       (1000 750)            R180
+JP2                         1X04                                 pinhead            (115 1810)            R270
+JP3                         1X12_ROUND                           microbuilder       (1200 1550)           R0
+JP4                         1X02                                 pinhead            (2300 1900)           R180
+JP5                         1X02                                 pinhead            (175 430)             R180
+JP6                         1X04                                 pinhead            (2590 170)            R180
+JP7                         1X03                                 pinhead            (4030 1345)           R180
+LED1                        CHIPLED_0603                         adafruit           (765 2070)            R90
+LED2                        CHIPLED_0603                         adafruit           (1450 550)            R270
+LED3                        CHIPLED_0603                         adafruit           (540 420)             R90
+LED4                        CHIPLED_0603                         adafruit           (2150 1990)           R0
+R1       10k                R0603                                rcl                (3660 895)            R180
+R2       100k               0603-NO                              microbuilder       (685 2220)            R270
+R3       7.5k               R0603                                rcl                (3660 835)            R180
+R4       4.3k               R0603                                rcl                (3775 1705)           R90
+R5       100k               0603-NO                              microbuilder       (1050 600)            R0
+R6       100k               0603-NO                              microbuilder       (800 600)             R180
+R7       100k               0603-NO                              microbuilder       (1550 1750)           R0
+R8       100k               0603-NO                              microbuilder       (1550 1675)           R0
+R9       10k                R0603                                rcl                (3875 1705)           R90
+R10                         R0603                                rcl                (800 2200)            R270
+R11                         R0603                                rcl                (1200 550)            R0
+R12                         R0603                                rcl                (570 520)             R270
+R13      100                R0603                                rcl                (4650 1500)           R180
+R14      100                R0603                                rcl                (4650 1650)           R180
+R15      100                R0603                                rcl                (4050 350)            R90
+R16      100                R0603                                rcl                (4300 350)            R90
+R17      100                R0603                                rcl                (4650 900)            R180
+R18      100                R0603                                rcl                (4650 1100)           R180
+R19      100                R0603                                rcl                (3500 2150)           R270
+R20      100                R0603                                rcl                (3700 2150)           R270
+R21      100                R0603                                rcl                (4150 2150)           R270
+R22      100                R0603                                rcl                (4250 2150)           R270
+R23      100                R0603                                rcl                (3450 350)            R90
+R24      100                R0603                                rcl                (3650 350)            R90
+R25      10k                R0603                                rcl                (3850 600)            R90
+R26      13k                R0603                                rcl                (3900 750)            R180
+R27                         R0603                                rcl                (2150 1850)           R90
+R31      10k                R0603                                rcl                (4400 750)            R180
+R32      7.5k               R0603                                rcl                (4100 950)            R270
+R35      10k                R0603                                rcl                (4400 1250)           R180
+R36      4.3k               R0603                                rcl                (4200 1250)           R0
+R39      10k                R0603                                rcl                (4445 1905)           R270
+R40      2.2k               R0603                                rcl                (4350 1900)           R270
+R45      100k               0603-NO                              microbuilder       (2050 1800)           R0
+SJ1                         SJ_2                                 jumper             (950 2100)            R0
+SJ2                         SJ_2                                 jumper             (950 2250)            R180
+SJ3                         SJ_2                                 jumper             (3490 965)            R180
+SJ4                         SJ                                   jumper             (650 1650)            R0
+SJ5                         SJ_2                                 jumper             (3550 1150)           R90
+SJ6                         SJ_2                                 jumper             (1850 1750)           R0
+SJ7                         SJ_2                                 jumper             (3440 1150)           R90
+SJ8                         SJ_2                                 jumper             (1550 1900)           R90
+SJ9                         SJ                                   jumper             (2300 1750)           R180
+SJ10                        SJ_2                                 jumper             (850 1900)            R270
+SJ11                        SJ_2                                 jumper             (700 1900)            R270
+U$4      FSM300             FSM300_FOOTPRINT                     COM-13909          (3350 500)            R90
+U1       COM-13909          MOD_COM-13909                        COM-13909          (2800 1850)           R180
+U2       H3LIS100DLTR       PQFN50P300X300X100-16N               H3LIS100DLTR       (3595 1425)           R270
+U3       IRF7313PBF         SO-8                                 COM-13909          (240 2120)            R0
+U4       MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (4300 1500)           R180
+U5       MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (4100 650)            R90
+U6       ICM-42670-P        IC_ICM-42670-P                       ICM-42670-P        (3850 1050)           R90
+U7       MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (3600 1850)           R270
+U8       MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (3600 650)            R90
+U9       MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (4300 1000)           R180
+U10      MCP96L00T-E/MX     QFN65P500X500X100-21N_MCP96L00T-E/MX MCP96L00T-E_MX     (4100 1850)           R270
+U11      UM3232EEAE         RQ_16_ADI                            ADM310             (1250 2050)           R270
+U12      IRF7313PBF         SO-8                                 COM-13909          (550 2350)            R90
+U13      SPX3819-3.3        SOT23-5                              microbuilder       (2000 1950)           R0
+U14      IRF7313PBF         SO-8                                 COM-13909          (900 400)             R270
