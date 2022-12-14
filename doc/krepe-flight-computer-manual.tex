@@ -34,7 +34,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-This document contains information about the flight computer for the KREPE mission as well as the safety precautions taken to ensure the flight hardware is not a danger to the ISS or its astronauts. In addition to electrical designs and schematics, this document contains pin names, links to datasheets, and implementation notes. The following sections outline the subsystems of the flight computer, pin names for software usage, and datasheets. Other details about the power subsystem including battery type and rating are also included. 
+This document contains information about the flight computer for the KREPE-2 mission as well as the safety precautions taken to ensure the flight hardware is not a danger to the ISS or its astronauts. In addition to electrical designs and schematics, this document contains pin names, links to datasheets, and implementation notes. The following sections outline the subsystems of the flight computer and pin names for software usage. Other details about the power subsystem including battery type and rating are also included. 
+
+There are a total of 5 capsules in the KREPE-2 mission, an increase from the 3 capsules present in the original KREPE mission (now referred to as KREPE-1). The table below shows the part names and numbers of the 5 capsules as presented to NASA for integration with a resupply mission.
+
+\begin{table}[H]
+\centering
+\caption{Part names and numbers for the KREPE-2 capsules.}
+\label{tab:partnames}
+\begin{tabular}{l | l}
+Part Name & Part Number \\
+\hline
+KRUPS-LI2200 & KRUPS-001 \\
+KRUPS-AMTPS & KRUPS-002 \\
+KRUPS-CPICA & KRUPS-003 \\
+KRUPS-FBRFRM & KRUPS-004 \\
+KRUPS-REUSE & KRUPS-005 
+\end{tabular}
+\end{table}
 
 The entire flight ready assembly is referred to as KREPE, which consists of a capsule containing the science (flight computer, batteries, etc.) and a metal shell known as KREM that acts as a Faraday cage, inhibiting any inadvertent RF radiation from the capsule. Both primary and secondary activation must occur for the capsule to become fully active and begin RF transmissions. To avoid accidental activation of hazardous subsystems, secondary activation criteria must be met. Primary and secondary activation processes are discussed in sections ~\ref{sec:primary-activation},\ref{sec:secondary-activation}, and \ref{sec:radio-power-control}.
 
@@ -43,7 +60,7 @@ The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsystems}.
 
 \subsection{Primary Activation}
 \label{sec:primary-activation}
-Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/D2SW-3L1H/Z12268-ND/1811989}} is closed and the flight computer boots to dormant mode where it consumes minimal power. The Iridium radio is not powered on in dormant mode. After pulling the pull tab, a piece of copper tape is put over the hole and primary activation is the complete. Copper tape ensures the KREM is completely sealed with regard to EMI. 
+Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/en/products/detail/panasonic-electric-works/ABJ362860/4691828}} is closed and the flight computer boots to dormant mode where it consumes minimal power. The Iridium radio is not powered on in dormant mode. After pulling the pull tab, an astronaut places a piece of copper tape over the hole, resealing the faraday cage effect of the KREM, and primary activation is the complete. Copper tape ensures the KREM is completely sealed with regard to inadvertent EMI while on station.
 
 A schematic showing battery protection and primary activation circuitry activation is shown in Fig. \ref{fig:activation-circuitry}. Less than 5 inches of copper 20 AWG PVC insulated wire is used to connect the batteries to the first power function (battery protection circuitry).
 
@@ -67,7 +84,8 @@ A schematic showing battery protection and primary activation circuitry activati
 
 \subsection{Secondary Activation}
 \label{sec:secondary-activation}
-Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. When this interrupt is triggered and the  register a temperature that is sufficient to have melted the polycarbonate bolts that hold the KREM together, secondary activation occurs. If the temperature is not sufficient, the flight computer re-enters dormant mode. No radio transmissions are attempted before secondary activation. 
+Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. This secondary activation interrupt is triggered during re-entry when the KREM heats to a temperature that is sufficient to melt the polycarbonate bolts that hold it together. No radio transmissions are attempted before secondary activation. The Iridium radio remains unpowered until secondary activation.
+
 
 %Thermocouples and the KREM interrupt sensing subsystem are polled to check for conditions sufficient for secondary activation. As KREPE re-enters the atmosphere, heating of the metal KREM will melt the plastic bolts that hold it together. This ambient temperature increase of the probe is sensed by the thermal measurement subsystem and is one criteria for secondary activation. The presence of KREM around the probe is detected by capacitive sensors, this is the secondary criteria for secondary activation. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
 
@@ -84,113 +102,59 @@ Once primary activation is complete and the flight computer is in dormant mode, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Subsystems}
+\section{Subsystem Design}
 \label{sec:subsystems}
 
-\subsection{Radio Communications}
+The following sections outline the different sensor systems that are present on the KREPE-2 capsules, including their placement along the forebody and relative position to other sensors. 
 
-KREPE has two radios, a debug radio used for ground work and an Iridium satellite modem used both on the ground and during the mission. The following subsections explain the conditions necessary for enabling the satellite modem during the mission and also restate that the debug radio is physically disabled prior to final integration and is never powered on or used during the actual mission.
-
-\subsubsection{Radio Power Control}
-\label{sec:radio-power-control}
-There are two inhibits to powering on the iridium, as denoted in Table~\ref{tab:radio-inhibits}. The separation of the KREM must be detected and the temperature of the capsule must be determined to be above the activation threshold temperature, $T_a$.
-%Two indeAn AND gate controls the power to the solid state relay controlling power to the Iridium radio. The secondary processor is connected to the other input of this AND gate to make sure that erroneous action on behalf the Teensy (or secondary safety processor) is not able to solely activate the radio. In addition to the thermocouple measurements, another inhibit to powering on the Iridium radio is the detection of KREM separation, performed by capacitive sensing. Table \ref{tab:radio-inhibits} summarizes the inhibits to radio activation.
-
-
-\begin{table}[H]
-	\caption{Inhibits to Ididium radio activation.}
-	\label{tab:radio-inhibits}
-	\centering
-	\begin{tabular}{l|l|l}
-		Sensor & Monitored by     &  Description  \\
-		\hline
-		
-		Thermocouples & Teensy  & Thermocouple temperature reported by Teensy\\
-		%Thermocouples & ARP		& Thermocouple temperature reported by secondary ARP \\
-		KREM Interrupt	 & Teensy  & KREM presence detected by Teensy
-	\end{tabular}
-	
-\end{table}
-
-
-
-\subsubsection{Iriduim Radio}
-We are using the A3LA-RS type modem seen on the NAL Research site~\footnote{ \url{http://www.nalresearch.com/IridiumHardware.html}}. The RF specifications, taken from the module's datasheet are shown in Fig. \ref{fig:iridium-rf-specs}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/iridium-rf-specs.png}
-    \caption{RF specifications of the AL3A-RS Iridium modem.}
-    \label{fig:iridium-rf-specs}
+\begin{figure}
+\centering
+\includegraphics[width=10cm]{images/tps_cad_highlight}
+\label{fig:sensor-locations}
+\caption{Thermal, pressure, and spectral measurement location on the capsule forebody.}
 \end{figure}
-
-\paragraph{Iridium Serial Interface}
-
-A 3.3V TTL to RS232 adapter is needed to interface with the AL3A-RS. As an improvement over KREPE-1, this chip is integrated onto the flight computer for more compact design and higher convenience. The serial converter uses a  MAX3232E RS-232 line driver and receiver~\footnote{\url{https://www.ti.com/product/MAX3232E}}.
-
-
-
-\subsubsection{Debug Radio}
-The KREPE flight computer features a secondary debug radio used for ground testing that is not enabled for the real mission.  Maximum output power according to the radio datasheet \footnote{\url{https://cdn.sparkfun.com/datasheets/Wireless/General/RFM69HCW-V1.1.pdf}} is 100mW.
-\begin{table}[H]
-	\centering
-	\caption{Radio module interface signals.}
-	\label{tab:pins_radio}
-	\begin{tabular}{l|l|l|l}
-		Feather M4 Pin & Net Name  & Description   & Teensy Configuration \\
-		\hline 
-		28 & RADIO\_RESET  &  Pull low to enable RFM69   & \texttt{OUTPUT} 
-		%29 & INT\_ISM    &  GPIO0 interrupt from RFM69 & \texttt{INPUT} \\
-		%33 & RADIO\_OFF\_SIG & Pulled high when the RFM69 is disabled & \texttt{INPUT} \\
-	\end{tabular}
-\end{table}
-The datasheet for this antenna can be found at  \url{https://cdn.taoglas.com/datasheets/FXP290.07.0100A.pdf}. 
-  
-
 
 \subsection{Thermal Measurement}
 The thermal measurement subsystem is used to take readings from up to six thermocouples (TCs) embedded within the TPS surrounding each capsule. 
 
-\subsubsection{Thermocouple Connections}
-
 The thermocouple to digital conversion system on KREPE-2 uses 6 MCP-9600 TC to digital converters linked via I2C bus. This is an improvement over the multiplexed converter setup used in the first KREPE mission. A low pass filter is included between the TC connector points and each MCP-9600 to help suppress spurious measurements.
-%
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/krepe-thermocouples.png}
-    \caption{NEED TO UPDATE THIS, SHOE THREAD iNSERTS!!!Thermocouple connection wiring with resepect to the analog mux chips IC3 (MUX2) and IC1 (MUX1).}
-    \label{fig:tc-conn}
-\end{figure}
+%%
+%\begin{figure}[H]
+%  \centering
+%    \includegraphics[width=0.5\textwidth]{images/krepe2-tc-closeup}
+ %   \caption{TC connection points for three of the six TC to digital conversion chips on the KREPE- flight computer. The plated holes accept solderable threaded inserts which make connecting TC lead wires much easier compare to the KREPE-1 flight computer, which required TC leads to be crimped into a Molex PicoBlade connector.}
+%    \label{fig:tc-closeup}
+%\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{FADS Pressure Measurement}
+New on the KREPE-2 mission is an array of ported pressure sensors in a cross configuration. This array constitutes what is known as a FADS system, or Flushed Air Data Sensing system. These ported pressure sensors (shown in Fig. \ref{fig:pressure-sensor}) are very useful in the reconstruction of the re-entry trajectory attitude. Flexible PTFE tubing is used  to connect the hole in the forebody to the barb on the pressure sensor.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{images/honeywell-sensor}
+\caption{Honeywell ported pressure sensor used for the FADS system. }
+\label{fig:pressure-sensor}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Spectrometer Subsystem}
+Another addition to the sensor suite on the KREPE-2 capsules is a Hamamatsu C12880 miniature spectrometer\footnote{\url{https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/c12880ma_kacc1226e.pdf}}.
+
+Due to the position that the spectrometer must be in, in the nose (stagnation point) of the capsule, there is a need for a processing element in the same region. For this reason we are working on implementing a Battery and Spectrometer Measurement System (BSMS). This BSMS will be able to read the spectrometer as well as monitor the system battery voltages. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Visual Status Indicators}
 There are individual LEDs on the POL switches connected to each serial port header, in addition to an indicator on the external 3v3 regulator. In addition to these indicators, the Feather M4 board also has an RGB led that is used to indicate program state
 
 
-The KREPE flight computer features several light emitting diodes (LEDs) to provide visual feedback during ground testing. Pin mappings and intended information denoted by each LED is shown in Table \ref{tab:pins_leds}.
-\begin{table}[H]
-	\centering
-	\caption{Debug LED Connections.}
-	\label{tab:pins_leds}
-	\begin{tabular}{l|l|l}
-		Teensy Pin & Net Name     & Teensy Configuration \\
-		\hline 
-		3 & LED1 - IRIDIUM ON        &   \texttt{OUTPUT}\\
-		4 & LED2 - IRIDIUM SIGNAL OK       &   \texttt{OUTPUT}\\
-		5 & LED3 - IRIDIUM RADIO TRANSMITTING       &   \texttt{OUTPUT}\\
-		6 & LED4 - ISM RADIO TRANSMITTING       &   \texttt{OUTPUT}\\
-		7 & LED5 - GENERAL ACTIVITY       &   \texttt{OUTPUT}
-	\end{tabular}
-\end{table}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Auxillary Sensors}
-The KREPE flight computer features several auxillary sensors that will be used to better characterize reentry. Measurements from an ADXL377 3-axis $\pm$200g accelerometer, ICM-20948 9-axis IMU, and DSP310 barometric pressure sensor are collected after secondary activation. Measurements from these auxiliary sensors are not used for activation.
+\subsection{Inertial Sensors}
+The KREPE-2 flight computer also features multiple inertial measurement sensors to collect rotational rates and accelerations experienced by the capsule during re-entry. Like FADS measurements, the IMU data collected by the capsule will also greatly aid the post-flight reconstruction of the re-entry environment which occurred for each capsule.
+
+The inertial sensors present on the KREPE-2 flight computer are an FSM300, ICM-42670, and an H3LIS100. The FSM300 is a preassembled unit which features a BNO-088 9 axis IMU. The maximum acceleration measurable by the FSM300 is $\pm$16g. The ICM-42670 is an additional 6-axis IMU included as an evaluation platform. The primary IMU is the FSM300. The H3LIS100 is a 3-axis accelerometer, included for measuring accelerations on the capsule which are greater than $\pm$16g.
 
 \begin{table}[H]
     \centering
@@ -214,7 +178,12 @@ The KREPE flight computer features several auxillary sensors that will be used t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 \subsection{Power and Batteries}
-Batteries are provided by JSC and rated at 3200mAh. System power is provided by two of these cells tabbed in parallel (tabbing performed and documented by JSC). Battery classification, product, and model number can be seen in Fig. \ref{fig:bat-spec} (taken from battery specification sheet).
+
+The power and battery subsystem on the KREPE-2 capsules has improved features and capacity from the KREPE-1 design. Batteries are still provided by NASA Cargo Mission Contract (CMC) fulfilled by JSC and rated at 3200mAh each. KREPE-2 features two separate battery packs which allow for greater flexibility when designing any future capsule instrumentation. Three cells are tabbed in series to provide a 3S1P pack (11.1V nominal), as well as a secondary system pack which consists of 3 cells tabbed in parallel, or 1S3P. The 1S3P (3.7V nominal) pack is an improvement over the 1S2P pack of KREPE-1 which powered the entire system.
+
+The 3.7V pack powers the flight computer, but not any high-draw peripherals (GPS, Iridium modem, spectrometer, etc). The 11.1V pack is switched on after secondary activation and powers any high draw peripherals through an optional 5V buck regulator. 
+
+Battery classification, product, and model number can be seen in Fig. \ref{fig:bat-spec} (taken from battery specification sheet).
 
 \begin{figure}[h!]
 	\centering
@@ -223,9 +192,9 @@ Batteries are provided by JSC and rated at 3200mAh. System power is provided by 
 	\caption{Sanyo battery specifications from the datasheet.}
 \end{figure}
 
-Charge current is limited to to 450 milliamps (mA), a charge rate of $C/12$ with the two (2) 3200 milliamp-hour (mAh) system  Battery Charge power can be delivered via Teensy USB or the \texttt{CHARGE} header. Charging input voltage is expected to be 5 volts. Charge voltage to the batteries is regulated to 4.2 volts by the charge management IC, an MCP73831\footnote{ (\url{https://www.microchip.com/wwwproducts/en/MCP73831})}, with status connections to the Teensy as shown in Table \ref{tab:pins-battery}. 
+The 3.7 pack is able to be recharged through the MCP73831\footnote{ (\url{https://www.microchip.com/wwwproducts/en/MCP73831})} present on the Feather M4, however the 11.1V pack currently be charged externally through a separate balance connector which does not connect to the flight computer.  
 
-charging when not installed vs charging when installed.
+There is work ongoing which aims to support the monitoring of the 3S1P pack. This system will also interface with the spectrometer. 
 
 Charging is only performed on the ground and there is no provision for charging in flight. Schematics and electrical connections are shown in Fig. \ref{fig:page1-3} in Appendix \ref{appa}.
 
@@ -243,8 +212,13 @@ Charging is only performed on the ground and there is no provision for charging 
 \end{table}
 
 \subsubsection{Battery Protection}
-Protection circuitry is implemented on the flight board to support 2P1S LiIon packs for system power. We are using a DW01-P Voltage and Current Protection IC \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
+Protection circuitry is implemented on each of the two battery packs present on the KREPE-2 capsules. 
 
+ We are using a DW01-P Voltage and Current Protection IC for the 3.7V system pack  \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
+
+The 11.1V auxiliary pack has a separate battery protection circuit that protects it from over current, under voltage, and over voltage conditions.
+
+TODO: add in the circuit and chip used on the 11.1V pack and add in the oscilloscope trace for it protecting from over current. 
 
 \begin{figure}[H]
 	\centering
@@ -255,7 +229,7 @@ Protection circuitry is implemented on the flight board to support 2P1S LiIon pa
 
 
 
-Protection circuitry as implemented on the KREPE flight computer PCB is shown in Fig. \ref{fig:bat-protec}. Our two batteries are in parallel where the battery image is shown in Fig. \ref{fig:bat-protec}, and BATT+ and BATT- face system power i.e. to the flight computer. This protection circuitry is upstream of the primary activation switch. The battery protection PCB can be seen in Fig. \ref{fig:bat-protect}.
+Protection circuitry as implemented on the KREPE flight computer PCB is shown in Fig. \ref{fig:bat-protec}. Our two battery packs are both connected to their respective battery protection circuitry, then  to primary activation switches. This protection circuitry is upstream of the primary activation switch. The battery protection PCB can be seen in Fig. \ref{fig:bat-protect}.
 
 
 \begin{figure}[H]
@@ -267,7 +241,7 @@ Protection circuitry as implemented on the KREPE flight computer PCB is shown in
 
 
 \paragraph{Over-current protection}
-The battery protection PCB can be seen preventing over current draw in Fig. \ref{fig:over-current}. After 6 milliseconds, the battery cells are disconnected from the output and current draw goes zero.
+Need to update this document with new o-scope traces of the battery protection circuitry kicking in and cutting current draw to zero.
 
 
 \begin{figure}[H]
