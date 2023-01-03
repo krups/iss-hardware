@@ -7,6 +7,7 @@
 
 \usepackage{url}
 \usepackage{float}
+\usepackage{tikz}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -60,6 +61,14 @@ The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsystems}.
 
 \subsection{Primary Activation}
 \label{sec:primary-activation}
+
+\begin{tikzpicture}[
+   every node/.append style={circle, draw=blue!80, inner sep=0pt, minimum size=12pt}]
+\node                 (1) at (0,0) {1};
+\node[thick]          (2) at (1,0) {2};
+\node[draw=white,text=black] (...) at (2,0) {...};
+\end{tikzpicture}
+
 Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/en/products/detail/panasonic-electric-works/ABJ362860/4691828}} is closed and the flight computer boots to dormant mode where it consumes minimal power. The Iridium radio is not powered on in dormant mode. After pulling the pull tab, an astronaut places a piece of copper tape over the hole, resealing the faraday cage effect of the KREM, and primary activation is the complete. Copper tape ensures the KREM is completely sealed with regard to inadvertent EMI while on station.
 
 A schematic showing battery protection and primary activation circuitry activation is shown in Fig. \ref{fig:activation-circuitry}. Less than 5 inches of copper 20 AWG PVC insulated wire is used to connect the batteries to the first power function (battery protection circuitry).
@@ -109,7 +118,7 @@ The following sections outline the different sensor systems that are present on 
 
 \begin{figure}
 \centering
-\includegraphics[width=10cm]{images/tps_cad_highlight}
+\includegraphics[width=5cm]{images/tps_cad_highlight}
 \label{fig:sensor-locations}
 \caption{Thermal, pressure, and spectral measurement location on the capsule forebody.}
 \end{figure}
@@ -128,12 +137,12 @@ The thermocouple to digital conversion system on KREPE-2 uses 6 MCP-9600 TC to d
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{FADS Pressure Measurement}
-New on the KREPE-2 mission is an array of ported pressure sensors in a cross configuration. This array constitutes what is known as a FADS system, or Flushed Air Data Sensing system. These ported pressure sensors (shown in Fig. \ref{fig:pressure-sensor}) are very useful in the reconstruction of the re-entry trajectory attitude. Flexible PTFE tubing is used  to connect the hole in the forebody to the barb on the pressure sensor.
+\subsection{Pressure Measurement}
+The KREPE-2 capsule design includes an array of ported pressure sensors in a cross configuration, constitutes what is known as a flushed air data sensing (FADS) system. Such FADS systems are very useful in the reconstruction of the re-entry trajectory attitude\cite{TODO}. Flexible PTFE tubing is used  to connect the hole in the forebody to the barb on the pressure sensor. An image of the Honeywell sensor used is shown in Fig. \ref{fig:pressure-sensor}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm]{images/honeywell-sensor}
+\includegraphics[width=3cm]{images/honeywell-sensor}
 \caption{Honeywell ported pressure sensor used for the FADS system. }
 \label{fig:pressure-sensor}
 \end{figure}
@@ -144,14 +153,8 @@ Another addition to the sensor suite on the KREPE-2 capsules is a Hamamatsu C128
 
 Due to the position that the spectrometer must be in, in the nose (stagnation point) of the capsule, there is a need for a processing element in the same region. For this reason we are working on implementing a Battery and Spectrometer Measurement System (BSMS). This BSMS will be able to read the spectrometer as well as monitor the system battery voltages. 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Visual Status Indicators}
-There are individual LEDs on the POL switches connected to each serial port header, in addition to an indicator on the external 3v3 regulator. In addition to these indicators, the Feather M4 board also has an RGB led that is used to indicate program state
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Inertial Sensors}
+\subsection{Inertial Measurement}
 The KREPE-2 flight computer also features multiple inertial measurement sensors to collect rotational rates and accelerations experienced by the capsule during re-entry. Like FADS measurements, the IMU data collected by the capsule will also greatly aid the post-flight reconstruction of the re-entry environment which occurred for each capsule.
 
 The inertial sensors present on the KREPE-2 flight computer are an FSM300, ICM-42670, and an H3LIS100. The FSM300 is a preassembled unit which features a BNO-088 9 axis IMU. The maximum acceleration measurable by the FSM300 is $\pm$16g. The ICM-42670 is an additional 6-axis IMU included as an evaluation platform. The primary IMU is the FSM300. The H3LIS100 is a 3-axis accelerometer, included for measuring accelerations on the capsule which are greater than $\pm$16g.
@@ -179,7 +182,7 @@ The inertial sensors present on the KREPE-2 flight computer are an FSM300, ICM-4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 \subsection{Power and Batteries}
 
-The power and battery subsystem on the KREPE-2 capsules has improved features and capacity from the KREPE-1 design. Batteries are still provided by NASA Cargo Mission Contract (CMC) fulfilled by JSC and rated at 3200mAh each. KREPE-2 features two separate battery packs which allow for greater flexibility when designing any future capsule instrumentation. Three cells are tabbed in series to provide a 3S1P pack (11.1V nominal), as well as a secondary system pack which consists of 3 cells tabbed in parallel, or 1S3P. The 1S3P (3.7V nominal) pack is an improvement over the 1S2P pack of KREPE-1 which powered the entire system.
+The power and battery subsystem on the KREPE-2 capsules has improved features and capacity from the KREPE-1 design. Batteries are still provided by NASA Cargo Mission Contract (CMC) fulfilled by JSC and rated at 3200mAh each. KREPE-2 features two separate battery packs which allow for greater flexibility when designing any future capsule instrumentation. Three cells are tabbed in series to provide a 3S1P pack (11.1V nominal), as well as a secondary system pack which consists of 3 cells tabbed in parallel, or 1S3P. %The 1S3P (3.7V nominal) pack is an improvement over the 1S2P pack of KREPE-1 which powered the entire system.
 
 The 3.7V pack powers the flight computer, but not any high-draw peripherals (GPS, Iridium modem, spectrometer, etc). The 11.1V pack is switched on after secondary activation and powers any high draw peripherals through an optional 5V buck regulator. 
 
@@ -199,17 +202,7 @@ There is work ongoing which aims to support the monitoring of the 3S1P pack. Thi
 Charging is only performed on the ground and there is no provision for charging in flight. Schematics and electrical connections are shown in Fig. \ref{fig:page1-3} in Appendix \ref{appa}.
 
 \subsubsection{Battery Status Interface}
-\begin{table}[H]
-    \centering
-    \caption{Pins to monitor battery voltage and charging status.}
-	\label{tab:pins-battery}
-    \begin{tabular}{c|c|c|r}
-    Teensy Pin & Net Name  & Description   & Teensy Configuration \\
-    \hline 
-    14 & BAT\_STAT & LiPo charge state & \texttt{OUTPUT} \\
-    22 A8 & BAT\_SENSE    &  Halved battery voltage for monitoring &   \texttt{INPUT} 
-    \end{tabular}
-\end{table}
+Throught BSMS...
 
 \subsubsection{Battery Protection}
 Protection circuitry is implemented on each of the two battery packs present on the KREPE-2 capsules. 
@@ -230,6 +223,7 @@ TODO: add in the circuit and chip used on the 11.1V pack and add in the oscillos
 
 
 Protection circuitry as implemented on the KREPE flight computer PCB is shown in Fig. \ref{fig:bat-protec}. Our two battery packs are both connected to their respective battery protection circuitry, then  to primary activation switches. This protection circuitry is upstream of the primary activation switch. The battery protection PCB can be seen in Fig. \ref{fig:bat-protect}.
+
 
 
 \begin{figure}[H]
@@ -253,10 +247,22 @@ Need to update this document with new o-scope traces of the battery protection c
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Visual Status Indicators}
+There are individual LEDs on the POL switches connected to each serial port header, in addition to an indicator on the external 3v3 regulator. In addition to these indicators, the Feather M4 board also has an RGB led that is used to indicate program state
+
+
+
+\section{Board Configuration and Programming}
+
+\subsection{Solder Jumpers}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  APPENDIX
+% APPENDIX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
