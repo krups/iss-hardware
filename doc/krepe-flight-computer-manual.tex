@@ -96,11 +96,6 @@ A schematic showing battery protection and primary activation circuitry activati
 Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. This secondary activation interrupt is triggered during re-entry when the KREM heats to a temperature that is sufficient to melt the polycarbonate bolts that hold it together. No radio transmissions are attempted before secondary activation. The Iridium radio remains unpowered until secondary activation.
 
 
-%Thermocouples and the KREM interrupt sensing subsystem are polled to check for conditions sufficient for secondary activation. As KREPE re-enters the atmosphere, heating of the metal KREM will melt the plastic bolts that hold it together. This ambient temperature increase of the probe is sensed by the thermal measurement subsystem and is one criteria for secondary activation. The presence of KREM around the probe is detected by capacitive sensors, this is the secondary criteria for secondary activation. Once the thermal and capacitive sensing subsystems have detected the separation of the metal enclosure, the Iridium radio is powered on and packet transmission begins.  
-
-%An activation redundancy processor (ARP) was added in Rev. 1.1 of the flight computer, if the flight computer needs to be tested without the ARP, there is a solder jumper on the bottom of the PCB (SJ1) that, when shorted together, bypasses the AND gate that controls Iridium radio activation, reducing the system to single activation.
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,21 +153,6 @@ Due to the position that the spectrometer must be in, in the nose (stagnation po
 The KREPE-2 flight computer also features multiple inertial measurement sensors to collect rotational rates and accelerations experienced by the capsule during re-entry. Like FADS measurements, the IMU data collected by the capsule will also greatly aid the post-flight reconstruction of the re-entry environment which occurred for each capsule.
 
 The inertial sensors present on the KREPE-2 flight computer are an FSM300, ICM-42670, and an H3LIS100. The FSM300 is a preassembled unit which features a BNO-088 9 axis IMU. The maximum acceleration measurable by the FSM300 is $\pm$16g. The ICM-42670 is an additional 6-axis IMU included as an evaluation platform. The primary IMU is the FSM300. The H3LIS100 is a 3-axis accelerometer, included for measuring accelerations on the capsule which are greater than $\pm$16g.
-
-\begin{table}[H]
-    \centering
-    \caption{Pins connecting to the ADXL377 and ICM-20948.}
-    \label{tab:pins_motionsensor}
-    \begin{tabular}{c|c|c|r}
-    Teensy Pin & Net Name  & Description   & Teensy Configuration \\
-    \hline 
-    36 A17 & XOUT & Analog out from accel (x axis) & \texttt{INPUT} \\
-    37 A18 & YOUT & Analog out from accel (y axis) & \texttt{INPUT} \\
-    38 A19 & ZOUT & Analog out from accel (z axis) & \texttt{INPUT} \\
-    35 & INT & Interrupt from ICM-20948 & \texttt{INPUT} \\
-    34 & FSYNC & Synchronization signal to ICM-20948 & \texttt{OUTPUT} 
-    \end{tabular}
-\end{table}
 
 %\paragraph{Barometric Pressure Sensor}
 %Version 1.1 of the flight computer features an Infineon DSP310 barometric pressure and temperature sensor connected to the SPI bus with active low chip select on pin 8 of the Teensy. This sensor is not used for activation detection. 
@@ -273,28 +253,28 @@ There are individual LEDs on the POL switches connected to each serial port head
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/page1.png}
+    \includegraphics[width=\textwidth]{images/flight-computer-schematic-page1.pdf}
     \caption{Page one of schematics.}
     \label{fig:page1-2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/page2.png}
+    \includegraphics[width=\textwidth]{images/flight-computer-schematic-page2.pdf}
     \caption{Page two of schematics.}
     \label{fig:page1_1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/page3.png}
+    \includegraphics[width=\textwidth]{images/flight-computer-schematic-page3.pdf}
     \caption{Page three of schematics.}
     \label{fig:page1-3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/page4.png}
+    \includegraphics[width=\textwidth]{images/flight-computer-schematic-page4.pdf}
     \caption{Page four of schematics.}
     \label{fig:page1-4}
 \end{figure}
@@ -350,6 +330,7 @@ This section contains reference cards for the COTS components used in the KREPE-
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
+% TODO: replace with FeatherM4 pin mapping
 \newpage
 \section{Arduino Pin Mapping}
 \label{app:pinmap}
