@@ -39,6 +39,112 @@
 This document outlines the procedures and verifications done to ensure the integrity of the spot welds used to attach tabs to the 18650 cells for the KREPE-2 mission. The procedures and specifications in this documents have been written to adhere to the guidelines of NASA battery tabbing and specification document \textit{\textbf{PRC-0009 Rev. D}}. According to this document, ``A Welding Procedure Specification (WPS) shall be qualified for each unique weld type to be produced by conforming to the requirements below, before the production welds are made." The WPS for tabbing the KREPE-2 batteries is defined in the following section. 
 
 
+\section{Battery Acceptance Testing}
+
+1 minute per axis
+
+used spectrum that was already qualified by JSC document, help with reflight
+
+Batteries were vibration tested at Yokohama facilities at the cell level on each axis. Capacity and open circuit voltage (OCV) were recorded before (see Tab. \ref{tab:acc1}) and after testing (see Tab. \ref{tab:acc2}) to ensure no cells were damaged during vibration. Six cells can be seen on the shaker table in the cell mounting form in Fig. \ref{fig:cell-setup}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/vibe-setup}
+\caption{Six cells in the 3D printed battery holder, mounted to the Yokohama shaker table.}
+\label{fig:cell-setup}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Capacity and voltage measurements made before vibration testing.}
+    \begin{tabular}{llll}
+        \textbf{Cell \#} & \textbf{OCV before vibe (V)} & \textbf{Capacity before vibe (mAh)} & \textbf{Pass vibe visual inspection? y/n} \\ \hline
+        1 & 4.14 & 3138 & y \\ 
+        2 & 4.15 & 3100 & y \\ 
+        3 & 4.15 & 3151 & y \\ 
+        4 & 4.14 & 3132 & y \\ 
+        5 & 4.16 & 3124 & y \\ 
+        6 & 4.16 & 3099 & y \\ 
+        7 & 4.14 & 3109 & y \\ 
+        8 & 4.14 & 3091 & y \\ 
+        9 & 4.15 & 3159 & y \\ 
+        10 & 4.14 & 3148 & y \\ 
+        11 & 4.17 & 3123 & y \\ 
+        12 & 4.17 & 3102 & y \\ 
+        13 & 4.13 & 3093 & y \\ 
+        14 & 4.14 & 3091 & y \\ 
+        15 & 4.15 & 3139 & y \\ 
+        16 & 4.15 & 3158 & y \\ 
+        17 & 4.17 & 3111 & y \\ 
+        18 & 4.17 & 3103 & y \\ 
+        19 & 4.13 & 3107 & y \\ 
+        20 & 4.13 & 3110 & y \\ 
+        21 & 4.14 & 3095 & y \\ 
+        22 & 4.13 & 3116 & y \\ 
+        23 & 4.15 & 3169 & y \\ 
+        24 & 4.15 & 3141 & y \\ 
+        25 & 4.15 & 3161 & y \\ 
+        26 & 4.15 & 3162 & y \\ 
+        27 & 4.17 & 3117 & y \\ 
+        28 & 4.17 & 3109 & y \\ 
+        29 & 4.17 & 3099 & y \\ 
+        30 & 4.17 & 3126 & y \\ 
+        31 & 4.14 & 3096 & y \\ 
+        32 & 4.14 & 3065 & y \\ 
+        33 & 4.14 & 3102 & y \\ 
+        34 & 4.14 & 3119 & y \\ 
+        35 & 4.15 & 3153 & y \\ 
+        36 & 4.15 & 3142 & y \\ 
+    \end{tabular}
+    \label{tab:acc1}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \caption{Capacity and voltage measurements after vibration testing. The differences in measured capacity from before and after vibration shows that all cells passed the acceptance test.}
+    \begin{tabular}{lllll}
+        \textbf{Cell \#} & \textbf{OCV after vibe (V)} & \textbf{Capacity after vibe (mAh)} & \textbf{\%diff OCV} & \textbf{\%diff capacity} \\ \hline
+        1 & 4.15 & 3117 & 0\% & 1\% \\ 
+        2 & 4.15 & 3110 & 0\% & 0\% \\ 
+        3 & 4.15 & 3108 & 0\% & 1\% \\ 
+        4 & 4.14 & 3163 & 0\% & -1\% \\ 
+        5 & 4.16 & 3191 & 0\% & -2\% \\ 
+        6 & 4.16 & 3179 & 0\% & -3\% \\ 
+        7 & 4.14 & 3169 & 0\% & -2\% \\ 
+        8 & 4.14 & 3168 & 0\% & -2\% \\ 
+        9 & 4.15 & 3123 & 0\% & 1\% \\ 
+        10 & 4.15 & 3124 & 0\% & 1\% \\ 
+        11 & 4.17 & 3111 & 0\% & 0\% \\ 
+        12 & 4.17 & 3114 & 0\% & 0\% \\ 
+        13 & 4.14 & 3125 & 0\% & -1\% \\ 
+        14 & 4.14 & 3183 & 0\% & -3\% \\ 
+        15 & 4.14 & 3131 & 0\% & 0\% \\ 
+        16 & 4.15 & 3142 & 0\% & 1\% \\ 
+        17 & 4.17 & 3141 & 0\% & -1\% \\ 
+        18 & 4.17 & 3121 & 0\% & -1\% \\ 
+        19 & 4.14 & 3103 & 0\% & 0\% \\ 
+        20 & 4.13 & 3121 & 0\% & 0\% \\ 
+        21 & 4.14 & 3168 & 0\% & -2\% \\ 
+        22 & 4.14 & 3140 & 0\% & -1\% \\ 
+        23 & 4.15 & 3101 & 0\% & 2\% \\ 
+        24 & 4.15 & 3132 & 0\% & 0\% \\ 
+        25 & 4.15 & 3146 & 0\% & 0\% \\ 
+        26 & 4.15 & 3141 & 0\% & 1\% \\ 
+        27 & 4.17 & 3161 & 0\% & -1\% \\ 
+        28 & 4.17 & 3164 & 0\% & -2\% \\ 
+        29 & 4.17 & 3168 & 0\% & -2\% \\ 
+        30 & 4.17 & 3176 & 0\% & -2\% \\ 
+        31 & 4.14 & 3180 & 0\% & -3\% \\ 
+        32 & 4.14 & 3154 & 0\% & -3\% \\ 
+        33 & 4.14 & 3111 & 0\% & 0\% \\ 
+        34 & 4.14 & 3118 & 0\% & 0\% \\ 
+        35 & 4.15 & 3105 & 0\% & 2\% \\ 
+        36 & 4.15 & 3114 & 0\% & 1\% \\ 
+    \end{tabular}
+    \label{tab:acc2}
+\end{table}
 
 \section{Welding Process Specification}
 
@@ -58,7 +164,7 @@ Not every detail from the \textit{\textbf{PRC-0009 Rev. D}} spec is able to be r
 
 \begin{table}
 \centering
-\caption{Resistance spot welding procedure qualification information}
+\caption{Resistance spot welding weld schedule}
 \label{tab:weldequip}
 \begin{tabular}{|l l|}
 \hline
@@ -106,6 +212,9 @@ Pulse duration & 10 ms \\
 
 \subsection{Process}
 
+say certified operator instead of trained hand
+
+add reference to section 4 table
 
 A tab weld consists of two separate weld instances, yielding 4 weld points, or ``nuggets", on each tab. There are two types of packs required for this mission. The 3S1P pack requires standard tab-to-battery welds, while the 1S3P pack requires tab-to-battery welds as well as tab-to-tab welds.
 
@@ -116,7 +225,7 @@ To qualify both of these processes, plug pull out tests will be done for tabs at
 \begin{enumerate}
 \item Cut 4 pieces of tab material 1.5" long
 \item Mark 4 points 0.2 in apart to weld at on each tab
-\item Ensure the batter powering the welder is charged and its voltage is greater than 11.1 V
+\item Ensure the battery powering the welder is charged and its voltage is greater than 11.1 V
 \item Initialize the weld controller and select 10ms weld pulse duration
 \item Stabilize the battery and pin the tab with one electrode
 \item Press the other weld tip to the battery
@@ -125,6 +234,8 @@ To qualify both of these processes, plug pull out tests will be done for tabs at
 
 
 \section{Weld Verification}
+
+change language to "it can be seen"
 
 As per PRC-0009, 15 sets of example welds are the minimum test batch size. To this end, tabs were attached to both the positive and negative ends of two Sanyo cells. There are 16 total welds resulting (in groups of 4 spot welds for each tab attachment point).
 
@@ -219,6 +330,10 @@ The KREPE-2 capsules have 2 battery packs with 3 cells each. One is a 3.7V pack 
 The tabbing material is made of nickel strips measuring $0.005$ inches thick and $0.355$ inches wide and cut to length before being attached to the batteries. Dimensional drawings showing weld spacing and tab dimensions for both packs can be found in Figs. \ref{fig:1s3p_drawing} and \ref{fig:3s1p_drawing}.
 
 \appendix
+
+add drawing number
+
+add approval for drawings
 
 \section{Battery Pack Drawings}
 Dimensions in inches.

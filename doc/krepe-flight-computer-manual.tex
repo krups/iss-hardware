@@ -46,11 +46,11 @@ There are a total of 5 capsules in the KREPE-2 mission, an increase from the 3 c
 \begin{tabular}{l | l}
 Part Name & Part Number \\
 \hline
-KRUPS-LI2200 & KRUPS-001 \\
-KRUPS-AMTPS & KRUPS-002 \\
-KRUPS-CPICA & KRUPS-003 \\
-KRUPS-FBRFRM & KRUPS-004 \\
-KRUPS-REUSE & KRUPS-005 
+KREPE-2-SPICA & KREPE-2-001 \\
+KREPE-2-CPICA & KREPE-2-003 \\
+KREPE-2-AMTPS & KREPE-2-002 \\
+KREPE-2-REUSE & KREPE-2-004 \\
+KREPE-2-FFORM & KREPE-2-004 \\
 \end{tabular}
 \end{table}
 
@@ -62,12 +62,12 @@ The subsystems of the flight computer are outlined in Sec.~\ref{sec:subsystems}.
 \subsection{Primary Activation}
 \label{sec:primary-activation}
 
-\begin{tikzpicture}[
-   every node/.append style={circle, draw=blue!80, inner sep=0pt, minimum size=12pt}]
-\node                 (1) at (0,0) {1};
-\node[thick]          (2) at (1,0) {2};
-\node[draw=white,text=black] (...) at (2,0) {...};
-\end{tikzpicture}
+%\begin{tikzpicture}[
+%   every node/.append style={circle, draw=blue!80, inner sep=0pt, minimum size=12pt}]
+%\node                 (1) at (0,0) {1};
+%\node[thick]          (2) at (1,0) {2};
+%\node[draw=white,text=black] (...) at (2,0) {...};
+%\end{tikzpicture}
 
 Primary activation is triggered by a pin pulled out of KREPE by astronauts. Once the pin is pulled, a mechanical switch\footnote{\url{https://www.digikey.com/en/products/detail/panasonic-electric-works/ABJ362860/4691828}} is closed and the flight computer boots to dormant mode where it consumes minimal power. The Iridium radio is not powered on in dormant mode. After pulling the pull tab, an astronaut places a piece of copper tape over the hole, resealing the faraday cage effect of the KREM, and primary activation is the complete. Copper tape ensures the KREM is completely sealed with regard to inadvertent EMI while on station.
 
@@ -79,7 +79,7 @@ A schematic showing battery protection and primary activation circuitry activati
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=12cm]{images/krepe2-avionics.png}
+    \includegraphics[width=\textwidth]{images/krepe-electrical-inhibits.png}
     \caption{Activation and battery protection schematic overview.}
     \label{fig:activation-circuitry}
 \end{figure}
@@ -93,7 +93,7 @@ A schematic showing battery protection and primary activation circuitry activati
 
 \subsection{Secondary Activation}
 \label{sec:secondary-activation}
-Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. This secondary activation interrupt is triggered during re-entry when the KREM heats to a temperature that is sufficient to melt the polycarbonate bolts that hold it together. No radio transmissions are attempted before secondary activation. The Iridium radio remains unpowered until secondary activation.
+Once primary activation is complete and the flight computer is in dormant mode, a digital input to the flight computer is configured as an interrupt to sense when the KREM separates from around the capsule. This secondary activation interrupt is triggered during re-entry when the KREM heats to a temperature that is sufficient to melt the polycarbonate bolts that hold it together. No radio transmissions are attempted before secondary activation. The Iridium radio remains unpowered until secondary activation, when flight software turns on the Panasonic AQV252 digital switch, powering up the  communications and sensor electronics.
 
 
 
@@ -109,7 +109,18 @@ Once primary activation is complete and the flight computer is in dormant mode, 
 \section{Subsystem Design}
 \label{sec:subsystems}
 
-The following sections outline the different sensor systems that are present on the KREPE-2 capsules, including their placement along the forebody and relative position to other sensors. 
+The following sections outline the different sensor systems that are present on the KREPE-2 capsules, including their placement along the forebody and relative position to other sensors. An overview of the hardware and sensors that are in a KREPE capsule, along with the electrical connections to the flight computer are shown in Fig. \ref{fig:hardware-diagram}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/krepe2-avionics-diagram.png}
+    \caption{Overview of the KRUPS flight computer and subsystem connections.}
+    \label{fig:hardware-diagram}
+\end{figure}
+
+
+\subsection{Thermal Measurement}
+The thermal measurement subsystem is used to take readings from up to six thermocouples (TCs) embedded within the TPS surrounding each capsule.  The locations for the thermal measurement points with respect to the internal housing are shown in Fig. \ref{fig:sensor-locations}, along with other sensor locations such as ported pressure sensors and spectrometers.
 
 \begin{figure}
 \centering
@@ -117,9 +128,6 @@ The following sections outline the different sensor systems that are present on 
 \label{fig:sensor-locations}
 \caption{Thermal, pressure, and spectral measurement location on the capsule forebody.}
 \end{figure}
-
-\subsection{Thermal Measurement}
-The thermal measurement subsystem is used to take readings from up to six thermocouples (TCs) embedded within the TPS surrounding each capsule. 
 
 The thermocouple to digital conversion system on KREPE-2 uses 6 MCP-9600 TC to digital converters linked via I2C bus. This is an improvement over the multiplexed converter setup used in the first KREPE mission. A low pass filter is included between the TC connector points and each MCP-9600 to help suppress spurious measurements.
 %%
@@ -181,17 +189,16 @@ There is work ongoing which aims to support the monitoring of the 3S1P pack. Thi
 
 Charging is only performed on the ground and there is no provision for charging in flight. Schematics and electrical connections are shown in Fig. \ref{fig:page1-3} in Appendix \ref{appa}.
 
-\subsubsection{Battery Status Interface}
-Throught BSMS...
+%\subsubsection{Battery Status Interface}
+%Throught BSMS...
 
 \subsubsection{Battery Protection}
 Protection circuitry is implemented on each of the two battery packs present on the KREPE-2 capsules. 
 
- We are using a DW01-P Voltage and Current Protection IC for the 3.7V system pack  \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
+ We are using a DW01-P Voltage and Current Protection IC for the 3.7V and 11.1V system packs  \footnote{\url{https://cdn.sparkfun.com/assets/learn_tutorials/2/5/1/DW01-P_DataSheet_V10.pdf}}.
 
 The 11.1V auxiliary pack has a separate battery protection circuit that protects it from over current, under voltage, and over voltage conditions.
 
-TODO: add in the circuit and chip used on the 11.1V pack and add in the oscilloscope trace for it protecting from over current. 
 
 \begin{figure}[H]
 	\centering
@@ -215,7 +222,7 @@ Protection circuitry as implemented on the KREPE flight computer PCB is shown in
 
 
 \paragraph{Over-current protection}
-Need to update this document with new o-scope traces of the battery protection circuitry kicking in and cutting current draw to zero.
+Both the 3.7V and 11.1 V packs have their own battery protection circuity as the first power function after the batteries and before any cabling goes to the avionics or flight computer. Pictures of the protection PCBs and overcurrent tests proving their effectiveness are shown in the following figures.
 
 
 \begin{figure}[H]
@@ -226,6 +233,24 @@ Need to update this document with new o-scope traces of the battery protection c
 \end{figure}
 
 
+The high voltage pack (3S) is protected by another PCB that also uses the DW01 protection IC, except it has three of these chips in the same circuit in order to protect a 3S (series) pack from overvoltage, undervoltage, and overcurrent conditions. An example of the 11.1V pack protection circuitry protecting from over current conditions can be seen in Fig. \ref{fig:3s-overcurrent}. The circuit protection board for the three cell series pack can be seen in Fig. \ref{fig:3s-protect}.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{images/3sProtection}
+\caption{Battery protection board for the 3S 11.1 V pack.}
+\label{fig:3s-protect}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/tek00006.png}
+\caption{Overcurrent protection test from 3S pack protection circuitry}
+\label{fig:3s-overcurrent}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Visual Status Indicators}
@@ -233,9 +258,27 @@ There are individual LEDs on the POL switches connected to each serial port head
 
 
 
-\section{Board Configuration and Programming}
+\section{PCB Assembly and Programming}
+
+\subsection{Component placement and board bringup}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/fctester}
+\caption{A freshly assembled flight computer with tester attached. The tester performs I$^2$C discovery and ensures all components are electrically connected}
+\label{fig:fc-tester}
+\end{figure}
 
 \subsection{Solder Jumpers}
+
+There are several solder jumpers on the KFC.
+\begin{itemize}
+\item \textbf{SJ8} selects which 3.3v source the RS232 translator chip will be powered from 
+\item \textbf{SJ10} selects the voltage source for the optionally level shifted UART (designated for GPS) to be either 5V or VIN (the high voltage pack)
+\item \textbf{SJ11} selects the voltage source for the level shifted UART (designated for the Iridium modem) to be either 5V or VIN ( the high voltage pack).
+\end{itemize}
+
+\subsection{Programming}
 
 
 
